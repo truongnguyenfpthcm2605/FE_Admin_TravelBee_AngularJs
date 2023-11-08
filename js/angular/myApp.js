@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute']);
+
 app.config(function($routeProvider) {
   $routeProvider
     .when('/hotel', {
@@ -19,8 +19,11 @@ app.config(function($routeProvider) {
     .when('/crudHotel', {
       templateUrl: 'CRUDQuanLyKhachSan.html'
     })
+    .when('/test', {
+      templateUrl: 'test.html'
+    })
     .otherwise({
-      redirectTo: 'hotel'
+      redirectTo: '/test'
     });
 });
 
