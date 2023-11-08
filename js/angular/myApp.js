@@ -1,15 +1,21 @@
-app.config(function ($routeProvider) {
+var app = angular.module('myApp', ['ngRoute']);
+app.config(function($routeProvider) {
   $routeProvider
-    .when("/main", {
-      templateUrl: "./pages/main.html",
+    .when('/hotel', {
+      templateUrl: 'pages/hotel.html'   
     })
-    .when("/QuanLyPhanHoi", {
-      templateUrl: "./pages/QuanLyPhanHoi.html",
+    .when('/account', {
+      templateUrl: 'CRUDQuanLyTaiKhoan.html'
     })
+    .when('/crudHotel', {
+      templateUrl: 'CRUDQuanLyTaiKhoan.html'
+    })
+    
     .otherwise({
-      redirectTo: "/main",
+      redirectTo: 'hotel'
     });
 });
+
 app.run(function ($rootScope) {
   $rootScope.$on("$routeChangeStart", function () {
     $rootScope.loading = true;
@@ -22,3 +28,4 @@ app.run(function ($rootScope) {
     alert("loading Templet Errors");
   });
 });
+

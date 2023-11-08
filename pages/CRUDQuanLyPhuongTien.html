@@ -34,6 +34,12 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <style>
+    .form-group{
+      margin: 10px;
+      padding: 20px;
+    }
+  </style>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -449,6 +455,11 @@
                               <div class="form-group">
                                 <label for="Description">Description:</label>
                                 <input type="text" class="form-control" id="Description">
+                              </div>
+                              <div class="form-group">
+                                <label class="custom-file-label" for="validatedCustomFile">Choose images :</label>
+                                <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                                <div class="invalid-feedback">Example invalid custom file feedback</div>
                               </div>
                               <div class="form-group">
                                 <label for="Role">IsActive:</label>
