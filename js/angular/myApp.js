@@ -2,15 +2,23 @@ var app = angular.module('myApp', ['ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider
     .when('/hotel', {
-      templateUrl: 'pages/hotel.html'   
+      templateUrl: './pages/hotel.html'   
     })
     .when('/account', {
-      templateUrl: 'CRUDQuanLyTaiKhoan.html'
+      templateUrl: 'pages/account.html'
+    })
+    .when('/transport', {
+      templateUrl: 'pages/transport.html'
     })
     .when('/crudHotel', {
-      templateUrl: 'CRUDQuanLyTaiKhoan.html'
+      templateUrl: 'CRUDQuanLyKhachSan.html'
     })
-    
+    .when('/crudAccount', {
+      templateUrl: 'CRUDQuanLyKhachSan.html'
+    })
+    .when('/crudHotel', {
+      templateUrl: 'CRUDQuanLyKhachSan.html'
+    })
     .otherwise({
       redirectTo: 'hotel'
     });
