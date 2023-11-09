@@ -22,6 +22,9 @@ app.config(function($routeProvider) {
     .when('/test', {
       templateUrl: 'pages/hotel.html'
     })
+    .when('/test', {
+      templateUrl: 'test.html'
+    })
     .otherwise({
       redirectTo: '/test'
     });
