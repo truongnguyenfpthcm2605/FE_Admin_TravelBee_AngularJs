@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en" ng-app="app" ng-controller="homeController"> 
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -34,12 +34,9 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-  <script src="../js/angular/myApp.js"></script>
 </head>
 
-<body class="g-sidenav-show  bg-gray-100" >
+<body class="g-sidenav-show  bg-gray-100">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -112,7 +109,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active " href="#/hotel">
+          <a class="nav-link  " href="QLKhachSan.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -132,7 +129,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#!/account">
+          <a class="nav-link active " href="../pages/QuanLyTaiKhoan.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
@@ -152,7 +149,7 @@
             <span class="nav-link-text ms-1">Quản Lý tài Khoản</span>
           </a>
         </li>
-    
+
         <li class="nav-item">
           <a class="nav-link  " href="../pages/QuanLyBaiViet.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -175,7 +172,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#!/transport">
+          <a class="nav-link  href="../pages/QuanLyPhuongTien.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>Quản Lý Vé</title>
@@ -248,6 +245,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
+        
         <li class="nav-item">
           <a class="nav-link  " href="../pages/sign-in.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -316,9 +314,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">QuanLyKhachSan</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">QuanLyTaiKhoan</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">QuanLyKhachSan</h6>
+          <h6 class="font-weight-bolder mb-0">QuanLyTaiKhoan</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -426,9 +424,91 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <div ng-view></div>
-    </main>
- 
+    <div class="container-fluid py-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6>Quản Lý Tài Khoản</h6>
+                <button class="btn btn-light">export</button>
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tài Khoản</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Chức Năng</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tình Trạng</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            <div>
+                              <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">John Michael</h6>
+                              <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0">Manager</p>
+                          <p class="text-xs text-secondary mb-0">Organization</p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-success">Online</span>
+                        </td>
+                        <td class="align-middle text-center">
+                          <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        </td>
+                        <td class="align-middle">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            Edit
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div class="d-flex px-2 py-1">
+                            <div>
+                              <img src="../assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm">Alexa Liras</h6>
+                              <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0">Programator</p>
+                          <p class="text-xs text-secondary mb-0">Developer</p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                        </td>
+                        <td class="align-middle text-center">
+                          <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
+                        </td>
+                        <td class="align-middle">
+                          <a href="#!/account" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            Edit
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </main>
   <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
       <i class="fa fa-cog py-2"> </i>
@@ -496,14 +576,11 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-
- 
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
-
   <script>
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
@@ -688,28 +765,13 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>
   <script>
-  var appp = angular.module('myApp', []);
+    let app = angular.module("app", ['ngRoute'])
+    app.controller("homeController", function ($scope) {
+      $scope.name = 'thien'
+    })
 
-    appp.controller('myCtrl', function($scope) {
-    
-      $scope.exportToExcel = function() {
-        // code xuất excel
-        $scope.items = [];
-            let titles = document.querySelectorAll('h6');
-            let phone = document.querySelectorAll('p');
-            for(let i = 0; i < titles.length; i++) {
-            $scope.items.push({
-                title: titles[i].textContent, 
-                phone: phone[i].textContent
-            });
-            }
-            $scope.exportToExcel = function() {
-                ngExcel.export($scope.items, 'data.xlsx'); 
-            }
-            }
-    
-    });
-    </script>
+  </script>
+  <script src="js/angular/myApp.js"></script>
 </body>
 
 </html>

@@ -1,8 +1,8 @@
-var app = angular.module('myApp', ['ngRoute']);
+
 app.config(function($routeProvider) {
   $routeProvider
     .when('/hotel', {
-      templateUrl: './pages/hotel.html'   
+      templateUrl: 'QLKhachSan.html'   
     })
     .when('/account', {
       templateUrl: 'pages/account.html'
@@ -10,17 +10,20 @@ app.config(function($routeProvider) {
     .when('/transport', {
       templateUrl: 'pages/transport.html'
     })
-    .when('/crudHotel', {
-      templateUrl: 'CRUDQuanLyKhachSan.html'
-    })
-    .when('/crudAccount', {
-      templateUrl: 'CRUDQuanLyKhachSan.html'
+    .when('/crudTransport', {
+      templateUrl: 'pages/CRUDQuanLyPhuongTien.html'
     })
     .when('/crudHotel', {
-      templateUrl: 'CRUDQuanLyKhachSan.html'
+      templateUrl: 'pages/CRUDQuanLyKhachSan.html'
+    })
+    .when('/CRUDaccount', {
+      templateUrl: 'pages/CRUDQuanLyTaiKhoan.html'
+    })
+    .when('/test', {
+      templateUrl: 'pages/hotel.html'
     })
     .otherwise({
-      redirectTo: 'hotel'
+      redirectTo: '/test'
     });
 });
 
