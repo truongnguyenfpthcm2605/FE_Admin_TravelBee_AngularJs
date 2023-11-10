@@ -6,6 +6,9 @@ app.config(function ($routeProvider) {
     .when("/QuanLyPhanHoi", {
       templateUrl: "./pages/QuanLyPhanHoi.html",
     })
+    .when("/profile", {
+      templateUrl: "./pages/profile.html",
+    })
     .otherwise({
       redirectTo: "/main",
     });
