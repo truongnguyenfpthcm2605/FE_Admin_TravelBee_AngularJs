@@ -63,6 +63,51 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+   <script>
+    import * as ExcelJS from 'exceljs';
+    
+    // Hàm xử lý khi click nút Lưu
+    function saveData() {
+    
+    // Lấy dữ liệu từ bảng
+    const rows = document.querySelectorAll('tbody tr');
+    
+    let data = [];
+    
+    rows.forEach(row => {
+    
+      const username = row.querySelector('td:first-child h6').innerText;
+      const email = row.querySelector('td:first-child p').innerText;
+      const role = row.querySelector('td:nth-child(2) p').innerText;
+      const status = row.querySelector('td:last-child span').innerText;
+    
+      data.push({
+        username, 
+        email,
+        role,
+        status
+      });
+    
+    });
+    
+    
+    // Ghi ra file Excel 
+    let workbook = new ExcelJS.Workbook();
+    
+    let worksheet = workbook.addWorksheet('Users');
+    
+    worksheet.columns = [
+      { header: 'Username', key: 'username'},
+      { header: 'Email', key: 'email' },
+      { header: 'Role', key: 'role'},
+      { header: 'Status', key: 'status'}
+    ];
+    
+    worksheet.addRows(data);
+    
+    workbook.xlsx.writeFile('users.xlsx');
+    };
+      </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

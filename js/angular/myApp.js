@@ -8,7 +8,7 @@ app.config(function($routeProvider) {
       templateUrl: 'pages/account.html'
     })
     .when('/transport', {
-      templateUrl: 'pages/transport.html'
+      templateUrl: 'QLPhuongTien.html'
     })
     .when('/crudTransport', {
       templateUrl: 'pages/CRUDQuanLyPhuongTien.html'
@@ -21,9 +21,6 @@ app.config(function($routeProvider) {
     })
     .when('/test', {
       templateUrl: 'pages/hotel.html'
-    })
-    .when('/test', {
-      templateUrl: 'test.html'
     })
     .otherwise({
       redirectTo: '/test'
