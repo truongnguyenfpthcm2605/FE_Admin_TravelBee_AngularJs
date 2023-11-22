@@ -2,6 +2,7 @@ app.config(function ($routeProvider) {
   $routeProvider
     .when("/main", {
       templateUrl: "./pages/main.html",
+      controller: "mainController"
     })
     .when("/QuanLyPhanHoi", {
       templateUrl: "./pages/QuanLyPhanHoi.html",
@@ -9,8 +10,15 @@ app.config(function ($routeProvider) {
     .when("/profile", {
       templateUrl: "./pages/profile.html",
     })
+    .when("/QuanLyVouCher", {
+      templateUrl: "./pages/QuanLyVouCher.html",
+    })
+    .when("/login", {
+      templateUrl: "./pages/sign-in.html",
+      controller: "loginController"
+    })
     .otherwise({
-      redirectTo: "/main",
+      redirectTo: "/login",
     });
 });
 app.run(function ($rootScope) {
