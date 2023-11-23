@@ -13,6 +13,10 @@ app.config(function ($routeProvider) {
     .when("/QuanLyVouCher", {
       templateUrl: "./pages/QuanLyVouCher.html",
     })
+    .when("/CRUDVoucher", {
+      templateUrl: "./pages/CRUDVoucher.html",
+      controller: "CRUDVoucherController"
+    })
     .when("/login", {
       templateUrl: "./pages/sign-in.html",
       controller: "loginController"
