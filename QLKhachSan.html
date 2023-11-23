@@ -64,49 +64,54 @@
     }
   </script>
    <script>
-    import * as ExcelJS from 'exceljs';
-    
-    // Hàm xử lý khi click nút Lưu
-    function saveData() {
-    
-    // Lấy dữ liệu từ bảng
-    const rows = document.querySelectorAll('tbody tr');
-    
-    let data = [];
-    
-    rows.forEach(row => {
-    
-      const username = row.querySelector('td:first-child h6').innerText;
-      const email = row.querySelector('td:first-child p').innerText;
-      const role = row.querySelector('td:nth-child(2) p').innerText;
-      const status = row.querySelector('td:last-child span').innerText;
-    
-      data.push({
-        username, 
-        email,
-        role,
-        status
-      });
-    
+// Import ExcelJS library
+import * as ExcelJS from 'exceljs'; 
+
+// Hàm xử lý khi click nút Lưu
+function saveData() {
+
+  // Lấy dữ liệu từ bảng
+  const rows = document.querySelectorAll('tbody tr');
+  
+  let data = [];
+  
+  rows.forEach(row => {
+  
+    const name = row.querySelector('td:nth-child(1)').innerText;
+    const age = row.querySelector('td:nth-child(2)').innerText;
+    const gender = row.querySelector('td:nth-child(3)').innerText;
+  
+    data.push({
+      name, 
+      age,
+      gender
     });
-    
-    
-    // Ghi ra file Excel 
-    let workbook = new ExcelJS.Workbook();
-    
-    let worksheet = workbook.addWorksheet('Users');
-    
-    worksheet.columns = [
-      { header: 'Username', key: 'username'},
-      { header: 'Email', key: 'email' },
-      { header: 'Role', key: 'role'},
-      { header: 'Status', key: 'status'}
-    ];
-    
-    worksheet.addRows(data);
-    
-    workbook.xlsx.writeFile('users.xlsx');
-    };
+  
+  });
+
+  // Tạo workbook và worksheet
+  let workbook = new ExcelJS.Workbook();
+  let worksheet = workbook.addWorksheet('Students');
+
+  // Định dạng cột
+  worksheet.columns = [
+    { header: 'Username', key: 'username'},
+    { header: 'Email', key: 'email' },
+    { header: 'Role', key: 'role'},
+  ];
+
+  // Thêm dữ liệu vào worksheet
+  worksheet.addRows(data);
+
+  // Xuất file
+  workbook.xlsx.writeBuffer().then(buffer => {
+    saveAs(new Blob([buffer]), 'students.xlsx');
+  });
+
+}
+
+// Gán hàm cho nút Lưu
+document.getElementById('btnSave').addEventListener('click', saveData);
       </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

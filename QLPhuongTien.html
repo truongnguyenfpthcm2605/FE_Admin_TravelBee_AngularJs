@@ -20,6 +20,9 @@
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script lang="javascript" src="dist/xlsx.full.min.js"></script>
+	<script src="excel.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -115,7 +118,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="QLTaiKhoan.html">
+          <a class="nav-link " href="#!/account">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>box-3d-50</title>
@@ -416,11 +419,13 @@
             <div class="card mb-4">
               <div class="card-header pb-0">
                 <h6>Quản Lý Phương Tiện</h6>
-                <button class="btn btn-light" onclick="saveData()">export</button>
+                <button class="btn btn-light" onclick="exportToExcel('Users', 'Users', 'data')">export</button>
+                <button class="btn btn-danger" ><a href="pages/CRUDQuanLyPhuongTien.html">New</a></button>
+
               </div>
               <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
-                  <table class="table align-items-center mb-0">
+                  <table class="table align-items-center mb-0" id="data">
                     <thead>
                       <tr>
                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
@@ -715,51 +720,63 @@
       },
     });
   </script>
-   <script>
-    import * as ExcelJS from 'exceljs';
-    
-    // Hàm xử lý khi click nút Lưu
-    function saveData() {
-    
-    // Lấy dữ liệu từ bảng
-    const rows = document.querySelectorAll('tbody tr');
-    
-    let data = [];
-    
-    rows.forEach(row => {
-    
-      const username = row.querySelector('td:first-child h6').innerText;
-      const email = row.querySelector('td:first-child p').innerText;
-      const role = row.querySelector('td:nth-child(2) p').innerText;
-      const status = row.querySelector('td:last-child span').innerText;
-    
-      data.push({
-        username, 
-        email,
-        role,
-        status
-      });
-    
+   <!-- <script>
+  // Import thư viện ExcelJS
+import * as ExcelJS from 'exceljs';
+
+// Hàm xử lý khi click nút Lưu
+function saveData() {
+
+  // Lấy dữ liệu từ các dòng trong bảng 
+  const rows = document.querySelectorAll('tbody tr');
+
+  const data = [];
+
+  rows.forEach(row => {
+
+    const title = row.querySelector('td:nth-child(1) h6').innerText;
+    const phone = row.querySelector('td:nth-child(2) p').innerText;  
+    const address = row.querySelector('td:nth-child(3) p').innerText;
+    const description = row.querySelector('td:nth-child(4) span').innerText;
+    const status = row.querySelector('td:nth-child(5) span').innerText;
+
+    data.push({
+      title, 
+      phone,
+      address,
+      description,
+      status
     });
-    
-    
-    // Ghi ra file Excel 
-    let workbook = new ExcelJS.Workbook();
-    
-    let worksheet = workbook.addWorksheet('Users');
-    
-    worksheet.columns = [
-      { header: 'Username', key: 'username'},
-      { header: 'Email', key: 'email' },
-      { header: 'Role', key: 'role'},
-      { header: 'Status', key: 'status'}
-    ];
-    
-    worksheet.addRows(data);
-    
-    workbook.xlsx.writeFile('users.xlsx');
-    };
-      </script>
+
+  });
+ 
+  // Tạo Workbook và Worksheet
+  let workbook = new ExcelJS.Workbook();
+  let worksheet = workbook.addWorksheet('Phuong tiens');
+
+  // Định dạng cho các cột 
+  worksheet.columns = [
+    { header: 'Tiêu đề', key: 'title' },
+    { header: 'Số điện thoại', key: 'phone' },
+    { header: 'Địa chỉ', key: 'address' }, 
+    { header: 'Miêu tả', key: 'description' },
+    { header: 'Trạng thái', key: 'status' }
+  ];
+
+  // Thêm dữ liệu vào worksheet
+  worksheet.addRows(data);
+
+  // Xuất file Excel
+  workbook.xlsx.writeBuffer().then(data => {
+    let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(blob, 'phuongtiens.xlsx');
+  });
+
+}
+
+// Gán sự kiện click cho nút Lưu
+document.getElementById('btnSave').addEventListener('click', saveData);
+  </script> -->
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
