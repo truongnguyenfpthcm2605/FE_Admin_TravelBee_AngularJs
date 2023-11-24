@@ -2,33 +2,34 @@ app.config(function ($routeProvider) {
   $routeProvider
     .when("/main", {
       templateUrl: "./pages/main.html",
-      controller: "mainController"
+      controller: "mainController",
     })
     .when("/QuanLyPhanHoi", {
       templateUrl: "./pages/QuanLyPhanHoi.html",
+      controller: "feedBackController",
     })
     .when("/profile", {
       templateUrl: "./pages/profile.html",
     })
     .when("/QuanLyVouCher", {
       templateUrl: "./pages/QuanLyVouCher.html",
-      controller : "voucherController"
+      controller: "voucherController",
     })
     .when("/CRUDVoucher", {
       templateUrl: "./pages/CRUDVoucher.html",
-      controller: "CRUDVoucherController"
+      controller: "CRUDVoucherController",
     })
 
     .when("/CRUDVoucher/:id", {
       templateUrl: "./pages/CRUDVoucher.html",
-      controller: "CRUDVoucherController"
+      controller: "CRUDVoucherController",
     })
     .when("/login", {
       templateUrl: "./pages/sign-in.html",
-      controller: "loginController"
+      controller: "loginController",
     })
     .otherwise({
-      redirectTo: "/login"
+      redirectTo: "/login",
     });
 });
 app.run(function ($rootScope) {
