@@ -144,4 +144,35 @@ select:default {
 select:valid {
     color: black;
 }
+
 /*end css thay doi thong tin tour*/
+.navbar>.container,
+.navbar>.container-fluid,
+.navbar>.container-sm,
+.navbar>.container-md,
+.navbar>.container-lg,
+.navbar>.container-xl,
+.navbar>.container-xxl {
+    border-radius: 5px;
+    background-color: #f3f1f2;
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 280px;
+}
+
+#navbarBlur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+
+.station {
+    margin: 20px 20px 5px 0px;
+    color: gray;
+    padding-left: 16px;
+    display: flex;
+}

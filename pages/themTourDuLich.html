@@ -1,46 +1,22 @@
-<h4>Thêm tour du lịch</h4>
-<form class="cf">
-    <div class="half left cf">
-        <select id="input-option">
+<script src="../assets/js/themtourdulich.js"></script>
+<div class="mt-7">
+    <h4>Thêm tour du lịchưeteter</h4>
+<form class="cf" action="#!/themDiemDen" >
+    <div class="half">
+        <select id="input-option" class="diemDi" >
             <option value="">Lựa chọn địa điểm đi</option>
-            <option value="option1">TP HCM</option>
-            <option value="option2">Nha Trang</option>
-            <option value="option3">Khánh Hòa</option>
         </select>
-        <select id="input-option">
+        <select id="input-option" class="diemDen" >
             <option value="">Lựa chọn địa điểm đến</option>
-            <option value="option1">Hà Nội</option>
-            <option value="option2">Kiên Giang</option>
-            <option value="option3">Sóc Trăng</option>
         </select>
-        <input type="date" id="input-date date-start" placeholder="ngày đi">
-        <input type="date" id="input-date date-end" placeholder="ngày về">
-    <input type="submit" id="input-submit" >
+
+        <label for="input-date" style="display:flex; color: gray" class="mt-3 mb-0">Chọn ngày đi</label>
+        <input type="date" id="input-date" class="ngayDi" >
+        <label for="input-date" style="display:flex; color: gray" class="mt-3 mb-0">Chọn ngày về</label>
+        <input type="date" id="input-date" class="ngayVe" >
+        <input type="number" id="input-price"  placeholder="Nhập giá VND" min="0">
+    <input type="submit" value="+" id="input-submit" >
+    <input type="submit" value="Lưu Thông Tin" id="luuTourDuLich" hidden style="background-color: gray">
     </div>
 </form>
-<!-- HTML giữ nguyên -->
-
-<script>
-
-    // Lấy các element
-    const startDateInput = document.getElementById('input-date.date-start');
-    const endDateInput = document.getElementById('input-date.date-end');
-    const submitBtn = document.getElementById('input-submit');
-
-    // Xử lý sự kiện click button
-    submitBtn.addEventListener('click', function () {
-
-        // Lấy giá trị ngày đi và về 
-        const startDate = new Date(startDateInput.value);
-        const endDate = new Date(endDateInput.value);
-
-        // Tính số ngày
-        const diffTime = Math.abs(endDate - startDate);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        // In ra console
-        console.log(diffDays);
-
-    });
-
-</script>
+</div>
