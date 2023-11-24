@@ -240,7 +240,7 @@
         </ul>
     </div>
 </aside>
-<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg " ng-controller="CRUDVoucherController">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
         navbar-scroll="true">
@@ -261,7 +261,8 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
+                            <span class="d-sm-inline d-none">{{fullname}} </span>
+                            <span style="color: #B31312;">{{authorities[0].authority}}</span>
                         </a>
                     </li>
 
@@ -270,7 +271,7 @@
         </div>
     </nav>
     <!-- End Navbar -->
-    <div class="container-fluid py-4" ng-controller="CRUDVoucherController">
+    <div class="container-fluid py-4" >
         <div class="row">
             <div class="col-lg-12">
                 <form style="width: 80%; margin: 0 auto" name="formVoucher" ng-submit="submitForm()" novalidate>

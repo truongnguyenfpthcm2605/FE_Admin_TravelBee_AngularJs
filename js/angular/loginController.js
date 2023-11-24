@@ -16,6 +16,7 @@ app.controller("loginController", function ($scope, $location, $http, $rootScope
                     $rootScope.authorities = $scope.object.authorities;
                     $rootScope.token = $scope.object.token;
 
+
                     $scope.object.authorities.forEach(e => {
                         if (e.authority === 'ADMIN' || e.authority === 'STAFF') {
                             Swal.fire({

@@ -263,7 +263,8 @@
                     <li class="nav-item d-flex align-items-center">
                         <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
                             <i class="fa fa-user me-sm-1"></i>
-                            <span class="d-sm-inline d-none">Sign In</span>
+                            <span class="d-sm-inline d-none">{{fullname}} </span>
+                            <span style="color: #B31312;">{{authorities[0].authority}}</span>
                         </a>
                     </li>
                     
@@ -279,10 +280,11 @@
                     <div class="card-header pb-0">
                         <div class="row">
                             <div class="col-lg-8">
-                                <input type="text" class="form-control" placeholder="Tìm kiếm theo mã, theo tên">
-                            </div>
+                                <input type="text" ng-model="searchInput" ng-change="searchKeyword(searchInput)" class="form-control" placeholder="Tìm kiếm theo mã, theo tên">
+                            </div>                            
                             <div class="col-lg-4">
-                                <button class="btn " style="background-color: orangered; color: white;">Tìm Kiếm</button>
+                                <button class="btn " style="background-color:#9ADE7B; color: white;"><i style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
+                                <a class="btn " href="#!CRUDVoucher" style="background-color:#748E63; color: white;"><i  style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create Voucher</a>
                             </div>
                         </div>
                     </div>
@@ -291,34 +293,34 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'id'; reverse = !reverse">
                                             CODE</th>
 
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'image'; reverse = !reverse">
                                             Hình ảnh</th>
 
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'title'; reverse = !reverse">
                                             Tiêu đề</th>
 
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'discount'; reverse = !reverse">
                                             Giảm giá</th>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" ng-click="sortKey = 'condition'; reverse = !reverse">
                                             Đã sử dụng</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'quanity'; reverse = !reverse">
                                             Số lượng</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'createdate'; reverse = !reverse">
                                             Ngày Đăng</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'enddate'; reverse = !reverse">
                                             Ngày hết hạn</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Người tạo</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'isactive'; reverse = !reverse">
                                             Kích hoạt</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Chỉnh sửa
@@ -326,7 +328,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="text-align: center;" ng-repeat="item in vouchers">
+                                    <tr style="text-align: center;" ng-repeat="item in current | orderBy:sortKey:reverse">
                                         <td>
                                             <p class="text-xxs font-weight-bold mb-0">{{item.id}}</p>
                                         </td>
@@ -376,10 +378,10 @@
                                             <span ng-if="!item.isactive" class="badge badge-danger">Đã khóa</span>                                       
                                         </td>
                                         <td class="align-middle">
-                                            <a class="badge badge-warning " href="#!CRUDVoucher" >
+                                            <a class="badge badge-warning " ng-href="#!CRUDVoucher/{{item.id}}" >
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
-                                            <a class="badge badge-danger " href="#j" >
+                                            <a class="badge badge-danger " ng-click="check(item.id)" >
                                                 <i class="fa-solid fa-trash"></i>
                                             </a>
 

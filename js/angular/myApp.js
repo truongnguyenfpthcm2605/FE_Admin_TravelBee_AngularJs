@@ -12,8 +12,14 @@ app.config(function ($routeProvider) {
     })
     .when("/QuanLyVouCher", {
       templateUrl: "./pages/QuanLyVouCher.html",
+      controller : "voucherController"
     })
     .when("/CRUDVoucher", {
+      templateUrl: "./pages/CRUDVoucher.html",
+      controller: "CRUDVoucherController"
+    })
+
+    .when("/CRUDVoucher/:id", {
       templateUrl: "./pages/CRUDVoucher.html",
       controller: "CRUDVoucherController"
     })
@@ -22,7 +28,7 @@ app.config(function ($routeProvider) {
       controller: "loginController"
     })
     .otherwise({
-      redirectTo: "/login",
+      redirectTo: "/login"
     });
 });
 app.run(function ($rootScope) {
