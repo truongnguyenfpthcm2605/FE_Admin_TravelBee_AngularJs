@@ -12,7 +12,7 @@ app.config(function ($routeProvider) {
     })
     .when("/QuanLyVouCher", {
       templateUrl: "./pages/QuanLyVouCher.html",
-      controller : "voucherController"
+      controller: "voucherController"
     })
     .when("/CRUDVoucher", {
       templateUrl: "./pages/CRUDVoucher.html",

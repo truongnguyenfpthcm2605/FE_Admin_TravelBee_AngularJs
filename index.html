@@ -69,6 +69,18 @@
       $rootScope.authorities = []
       $rootScope.fullname = ""
       $rootScope.url = "http://localhost:8080"
+      $rootScope.voucherParam = []
+
+      var firebaseConfig = {
+				apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
+				authDomain: "travel-bee-e0b59.firebaseapp.com",
+				projectId: "travel-bee-e0b59",
+				storageBucket: "travel-bee-e0b59.appspot.com",
+				messagingSenderId: "991526403311",
+				appId: "1:991526403311:web:24e7a3ba76e7d0d769af1a",
+				measurementId: "G-DE29CFQQMY"
+			};
+			var config = firebase.initializeApp(firebaseConfig);
 
     })
 
