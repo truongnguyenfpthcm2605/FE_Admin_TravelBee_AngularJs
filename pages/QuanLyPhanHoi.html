@@ -526,60 +526,53 @@
 
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{item.createdate}}</span>
+                                            <span class="text-secondary text-xs font-weight-bold">{{item.createdate |
+                                                date:'dd/MM/yyyy'}}</span>
                                         </td>
                                         <td class="align-middle">
                                             <a href="" class="text-secondary font-weight-bold text-xs"
-                                                data-toggle="modal" data-target="#editModal"
+                                                data-toggle="modal" data-target="#editModal_{{item.id}}"
                                                 data-original-title="Chỉnh sửa người dùng">
                                                 Trả Lời
                                             </a>
-                                            <div class="modal fade" id="editModal" tabindex="-1" role="dialog"
-                                                aria-labelledby="editModalLabel" aria-hidden="true">
+                                            <div class="modal fade" id="editModal_{{item.id}}" tabindex="-1"
+                                                role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="emailModalLabel">Send Email</h5>
+                                                            <h5 class="modal-title" id="emailModalLabel">Send Email
+                                                                {{item.id}}</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="#" name="formFeedback">
+                                                            <form name="formFeedback">
                                                                 <div class="form-group">
                                                                     <label for="recipient">To</label>
                                                                     <input type="email" class="form-control"
-                                                                        id="recipient"
+                                                                        id="recipient" disabled
                                                                         placeholder="Enter recipient's email" required
-                                                                        ng-model="feedback.to" name="txtto">
-                                                                    <span style="color: red; font-size: 15px;"
-                                                                        ng-show="formFeedback.txtto.$dirty && formFeedback.txtto.$error.required">To
-                                                                        không
-                                                                        được
-                                                                        bỏ
-                                                                        trống</span>
+                                                                        ng-model="item.account.email" name="txtto">
+
+
+
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="subject">Subject</label>
+                                                                    <label for="subject">Tin nhắn</label>
                                                                     <input type="text" class="form-control" id="subject"
                                                                         placeholder="Enter email subject" required
-                                                                        ng-model="feedback.subject" name="txtsubject">
-                                                                    <span style="color: red; font-size: 15px;"
-                                                                        ng-show="formFeedback.txtsubject.$dirty && formFeedback.txtsubject.$error.required">Tiêu
-                                                                        Đề
-                                                                        không
-                                                                        được
-                                                                        bỏ
-                                                                        trống</span>
+                                                                        ng-model="item.content" name="txtsubject">
+                                                                    <img src="{{item.images}}" alt=""
+                                                                        style="width: 200px; border-radius: 10px">
+
                                                                 </div>
-                                                                <div class="form-group">
+                                                                <div class=" form-group">
                                                                     <label for="content">content</label>
                                                                     <textarea class="form-control" id="content" rows="4"
                                                                         placeholder="Enter email content" required
-                                                                        ng-model="feedback.content"
-                                                                        name="txtcontent"></textarea>
+                                                                        ng-model="content" name="txtcontent"></textarea>
                                                                     <span style="color: red; font-size: 15px;"
                                                                         ng-show="formFeedback.txtcontent.$dirty && formFeedback.txtcontent.$error.required">Tin
                                                                         Nhắn
@@ -590,9 +583,8 @@
                                                                 </div>
                                                                 <button type="submit"
                                                                     class="btn bg-gradient-dark w-100 my-4 mb-2"
-                                                                    ng-click="submitForm()"
-                                                                    ng-disabled="formFeedback.$invalid">Send
-                                                                    Email
+                                                                    ng-click="submitForm(item.id,content)"
+                                                                    ng-disabled="formFeedback.$invalid">Gửi
                                                                 </button>
                                                             </form>
                                                         </div>

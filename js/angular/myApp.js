@@ -8,6 +8,10 @@ app.config(function ($routeProvider) {
       templateUrl: "./pages/QuanLyPhanHoi.html",
       controller: "feedBackController",
     })
+    .when("/modalFeedback", {
+      templateUrl: "./pages/modalFeedback.html",
+      controller: "modalFeedbackController",
+    })
     .when("/profile", {
       templateUrl: "./pages/profile.html",
     })
