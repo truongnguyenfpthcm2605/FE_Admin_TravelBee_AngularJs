@@ -1,38 +1,40 @@
-// Thêm sự kiện click cho nút in
-let jsPDF = window.jsPDF;
-jsPDF = window.jsPDF;
+const form = document.getElementById('formticket');
+const nameInput = document.getElementById('input-name');
+const emailInput = document.getElementById('input-email');
+const cccdInput = document.getElementById('CCCD');
+const phoneInput = document.getElementById('phonenumber');
 
-document.addEventListener('DOMContentLoaded', function () {
-    const printBtn = document.getElementById('printTicket');
+document.addEventListener('DOMContentLoaded', () => {
 
-    if (printBtn) {
-        printBtn.addEventListener('click', function () {
-            printTicket();
-        });
-    }
 
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        let valid = true;
+
+        if (nameInput.value === '') {
+            valid = false;
+            nameInput.classList.add('error');
+        }
+
+        if (!emailInput.value.includes('@')) {
+            valid = false;
+            emailInput.classList.add('error');
+        }
+
+        if (cccdInput.value.length !== 12) {
+            valid = false;
+            cccdInput.classList.add('error');
+        }
+
+        if (phoneInput.value.length < 10) {
+            valid = false;
+            phoneInput.classList.add('error');
+        }
+
+        if (valid) {
+            form.submit();
+        }
+    });
 
 });
-
-function printTicket() {
-    // Đường dẫn đến trang printTicket.html
-    const url = './printTicket.html';
-
-    // Sử dụng fetch để tải nội dung của trang
-    fetch(url)
-        .then(response => response.text())
-        .then(htmlContent => {
-            // Tạo một đối tượng jsPDF
-
-            const pdf = new jsPDF.jsPDF();
-
-            // Thêm nội dung của trang vào file PDF
-            pdf.fromHTML(htmlContent, 15, 15);
-
-            // Tải xuống file PDF với tên là "VeDatCho.pdf"
-            pdf.save('VeDatCho.pdf');
-        })
-        .catch(error => {
-            console.error('Error fetching HTML content:', error);
-        });
-}
