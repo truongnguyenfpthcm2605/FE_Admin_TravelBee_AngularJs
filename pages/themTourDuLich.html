@@ -1,0 +1,22 @@
+<script src="../assets/js/themtourdulich.js"></script>
+<div class="mt-7">
+    <h4>Thêm tour du lịch</h4>
+<form class="cf" action="#!/themDiemDen" >
+    <div class="half">
+        <select id="input-option" class="diemDi" >
+            <option value="">Lựa chọn địa điểm đi</option>
+        </select>
+        <select id="input-option" class="diemDen" >
+            <option value="">Lựa chọn địa điểm đến</option>
+        </select>
+
+        <label for="input-date" style="display:flex; color: gray" class="mt-3 mb-0">Chọn ngày đi</label>
+        <input type="date" id="input-date" class="ngayDi" >
+        <label for="input-date" style="display:flex; color: gray" class="mt-3 mb-0">Chọn ngày về</label>
+        <input type="date" id="input-date" class="ngayVe" >
+        <input type="number" id="input-price"  placeholder="Nhập giá VND" min="0">
+    <input type="submit" value="+" id="input-submit" >
+    <input type="submit" value="Lưu Thông Tin" id="luuTourDuLich" hidden style="background-color: gray">
+    </div>
+</form>
+</div>
