@@ -27,6 +27,27 @@ app.config(function ($routeProvider) {
       templateUrl: "./pages/sign-in.html",
       controller: "loginController"
     })
+    .when('/hotel', {
+      templateUrl: 'QLKhachSan.html'
+    })
+    .when('/account', {
+      templateUrl: 'pages/account.html'
+    })
+    .when('/transport', {
+      templateUrl: 'QLPhuongTien.html'
+    })
+    .when('/crudTransport', {
+      templateUrl: 'pages/CRUDQuanLyPhuongTien.html'
+    })
+    .when('/crudHotel', {
+      templateUrl: 'pages/CRUDQuanLyKhachSan.html'
+    })
+    .when('/CRUDaccount', {
+      templateUrl: 'pages/CRUDQuanLyTaiKhoan.html'
+    })
+    .when('/test', {
+      templateUrl: 'pages/hotel.html'
+    })
     .otherwise({
       redirectTo: "/login"
     });
