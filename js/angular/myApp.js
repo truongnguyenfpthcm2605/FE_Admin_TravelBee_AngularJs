@@ -1,8 +1,34 @@
-
-app.config(function($routeProvider) {
+app.config(function ($routeProvider) {
   $routeProvider
+    .when("/main", {
+      templateUrl: "./pages/main.html",
+      controller: "mainController"
+    })
+    .when("/QuanLyPhanHoi", {
+      templateUrl: "./pages/QuanLyPhanHoi.html",
+    })
+    .when("/profile", {
+      templateUrl: "./pages/profile.html",
+    })
+    .when("/QuanLyVouCher", {
+      templateUrl: "./pages/QuanLyVouCher.html",
+      controller: "voucherController"
+    })
+    .when("/CRUDVoucher", {
+      templateUrl: "./pages/CRUDVoucher.html",
+      controller: "CRUDVoucherController"
+    })
+
+    .when("/CRUDVoucher/:id", {
+      templateUrl: "./pages/CRUDVoucher.html",
+      controller: "CRUDVoucherController"
+    })
+    .when("/login", {
+      templateUrl: "./pages/sign-in.html",
+      controller: "loginController"
+    })
     .when('/hotel', {
-      templateUrl: 'QLKhachSan.html'   
+      templateUrl: 'QLKhachSan.html'
     })
     .when('/account', {
       templateUrl: 'pages/account.html'
@@ -23,10 +49,9 @@ app.config(function($routeProvider) {
       templateUrl: 'pages/hotel.html'
     })
     .otherwise({
-      redirectTo: '/test'
+      redirectTo: "/login"
     });
 });
-
 app.run(function ($rootScope) {
   $rootScope.$on("$routeChangeStart", function () {
     $rootScope.loading = true;
@@ -39,4 +64,3 @@ app.run(function ($rootScope) {
     alert("loading Templet Errors");
   });
 });
-

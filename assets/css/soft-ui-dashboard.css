@@ -9785,6 +9785,7 @@ fieldset:disabled .btn {
 
 .text-uppercase {
   text-transform: uppercase !important;
+  cursor: pointer;
 }
 
 .text-capitalize {
