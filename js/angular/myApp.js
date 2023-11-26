@@ -23,31 +23,59 @@ app.config(function ($routeProvider) {
       templateUrl: "./pages/CRUDVoucher.html",
       controller: "CRUDVoucherController"
     })
+
     .when("/login", {
       templateUrl: "./pages/sign-in.html",
       controller: "loginController"
     })
     .when('/hotel', {
-      templateUrl: 'QLKhachSan.html'
+      templateUrl: './pages/QLKhachSan.html'
     })
     .when('/account', {
-      templateUrl: 'pages/account.html'
+      templateUrl: './pages/QLTaiKhoan.html'
     })
     .when('/transport', {
-      templateUrl: 'QLPhuongTien.html'
+      templateUrl: './pages/QLPhuongTien.html'
     })
     .when('/crudTransport', {
-      templateUrl: 'pages/CRUDQuanLyPhuongTien.html'
+      templateUrl: './pages/CRUDQuanLyPhuongTien.html'
     })
     .when('/crudHotel', {
-      templateUrl: 'pages/CRUDQuanLyKhachSan.html'
+      templateUrl: './pages/CRUDQuanLyKhachSan.html'
     })
     .when('/CRUDaccount', {
-      templateUrl: 'pages/CRUDQuanLyTaiKhoan.html'
+      templateUrl: './pages/CRUDQuanLyTaiKhoan.html'
     })
-    .when('/test', {
-      templateUrl: 'pages/hotel.html'
+
+    .when('/danhsachve', {
+      templateUrl: './pages/DanhSachVe.html'
     })
+
+    .when('/ThayDoiThongTinVe', {
+      templateUrl: './pages/ThayDoiThongTinVe.html'
+    })
+
+    .when('/themDiaDiem', {
+      templateUrl: './pages/formThemDiaDiem.html'
+    })
+    .when('/ThayDoiThongtour', {
+      templateUrl: './pages/thayDoiThongTinTour.html'
+    })
+    .when('/themtourdulich', {
+      templateUrl: './pages/themTourDuLich.html'
+    })
+
+    .when('/QuanLyTour', {
+      templateUrl: './pages/QuanLyTour.html'
+    })
+    .when('/quanLyDiaDiem', {
+      templateUrl: './pages/quanLyDiaDiem.html'
+    })
+
+    .when('/ticket', {
+      templateUrl: './pages/QLVe.html'
+    })
+
     .otherwise({
       redirectTo: "/login"
     });
