@@ -489,22 +489,23 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                                            ng-click="sortKey = 'name'; reverse = !reverse">
                                             Người Dùng</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                                            ng-click="sortKey = 'content'; reverse = !reverse">
                                             Tin Nhắn</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                                            ng-click="sortKey = 'isactive'; reverse = !reverse">
                                             Tình Trạng</th>
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                                            ng-click="sortKey = 'createdate'; reverse = !reverse">
                                             Ngày Đăng</th>
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="item in current ">
+                                    <tr ng-repeat="item in current | orderBy:sortKey:reverse">
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
