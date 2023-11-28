@@ -266,7 +266,7 @@ id="sidenav-main">
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-4" >
-        <div class="row">
+        <div class="row" >
             <div class="col-lg-12">
                 <form style="width: 80%; margin: 0 auto" name="formVoucher" ng-submit="submitForm()" novalidate>
 
@@ -298,7 +298,7 @@ id="sidenav-main">
                         <span style="color: red; font-size: 15px;" ng-show="formVoucher.txtdiscount.$error.min">Giảm giá không được nhập số âm.</span>
                     </div>
             
-                    <div  class="form-group">
+                    <div ng-if="check" class="form-group">
                         <label>Đã sử dụng</label>
                         <input type="number" ng-value="voucher.condition"   class="form-control" ng-model="voucher.condition" disabled>
                     </div>
@@ -336,14 +336,47 @@ id="sidenav-main">
                         <label>Chọn File</label>
                         <input type="file" class="form-control" id="fileInputfb" >
                     </div>
-            
                     <div>
                         <label>Hình ảnh</label> <br>
-                        <img  ng-if="check" src="{{voucher.image}}" alt="" style="width: 100px; border-radius: 10px;  " id="review">
-                        <img  ng-if="!check"  src="https://s3.amazonaws.com/thumbnails.venngage.com/template/5456834b-ba95-41a9-85b2-4abd4d313c11.png" alt="" style="width: 100px; border-radius: 10px; "id="review">
+                        <img  src="" alt="" style="width: 100px; border-radius: 10px;  "id="review">
                     </div>
-            
                     <button type="submit"  style="margin-top: 10px; width: 200px; background-color: orangered; color: #FFFFDD;" class="btn" ng-disabled="formVoucher.$invalid">Lưu Voucher</button>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
+                    <h1>hello</h1>
                 </form>
             </div>
         </div>

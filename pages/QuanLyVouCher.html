@@ -277,14 +277,14 @@ id="sidenav-main">
                                 <input type="text" ng-model="searchInput" ng-change="searchKeyword(searchInput)" class="form-control" placeholder="Tìm kiếm theo mã, theo tên">
                             </div>                            
                             <div class="col-lg-4">
-                                <button class="btn " style="background-color:#9ADE7B; color: white;"><i style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
+                                <button ng-click="exportExcel()" class="btn " style="background-color:#9ADE7B; color: white;"><i style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
                                 <a class="btn " href="#!CRUDVoucher" style="background-color:#748E63; color: white;"><i  style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create Voucher</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
+                            <table class="table align-items-center mb-0" id="table-voucher">
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'id'; reverse = !reverse">
@@ -297,7 +297,7 @@ id="sidenav-main">
                                             Tiêu đề</th>
 
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" ng-click="sortKey = 'discount'; reverse = !reverse">
-                                            Giảm giá</th>
+                                            Giảm giá %</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2" ng-click="sortKey = 'condition'; reverse = !reverse">
                                             Đã sử dụng</th>
@@ -327,19 +327,22 @@ id="sidenav-main">
                                             <p class="text-xxs font-weight-bold mb-0">{{item.id}}</p>
                                         </td>
                                         <td>
+                                            <span style="display: none;">{{item.image}}</span>
                                             <div class="d-flex px-2 py-1">
                                                 <div>
                                                     <img src="{{item.image}}" class="avatar avatar-sm me-3"
-                                                        alt="">
+                                                        alt="" width="300px">
                                                 </div>
+    
                                                 
                                             </div>
+                                            
                                         </td>
                                         <td>
                                             <p class="text-xxs font-weight-bold mb-0">{{item.title}}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xxs font-weight-bold mb-0">{{item.discount}} %</p>
+                                            <p class="text-xxs font-weight-bold mb-0">{{item.discount}} </p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="">{{item.condition}}</span>
@@ -375,7 +378,7 @@ id="sidenav-main">
                                             <a class="badge badge-warning " ng-href="#!CRUDVoucher/{{item.id}}" >
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </a>
-                                            <a class="badge badge-danger " ng-click="check(item.id)" >
+                                            <a class="badge badge-danger " ng-click="deleteid(item.id)" >
                                                 <i class="fa-solid fa-trash"></i>
                                             </a>
 

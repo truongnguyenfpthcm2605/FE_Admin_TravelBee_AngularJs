@@ -1,43 +1,88 @@
 app.controller("CRUDVoucherController", function ($scope, $location, $http, $rootScope, $routeParams) {
     $scope.check = false
+    $scope.save = {}
+    let review = document.getElementById('review')
     $scope.image = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/5456834b-ba95-41a9-85b2-4abd4d313c11.png'
     if ($routeParams.id) {
         $scope.voucher = $rootScope.voucherParam.find(function (voucher) {
             return voucher.id === $routeParams.id;
         });
+        review.src = $scope.voucher.image
         $scope.check = true
     } else {
         $scope.voucher = {}
+        review.src = $scope.image
     }
 
+
+
     $scope.submitForm = function () {
-        $scope.voucher.image = $scope.image
-        $scope.email = $rootScope.email
-        console.log($scope.voucher)
-        $http.post($rootScope.url + "/api/v1/staff/voucher/save", $scope.voucher,
-            {
-                headers: {
-                    'Authorization': 'Bearer ' + $rootScope.token
-                }
-            }).then(function (response) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Thêm voucher thành công',
-                    text: 'Tuyệt vời!',
+        if ($scope.check) {
+            $scope.save = {
+                id: $scope.voucher.id,
+                title: $scope.voucher.title,
+                image: review.src,
+                discount: $scope.voucher.discount,
+                condition: $scope.voucher.condition,
+                quanity: $scope.voucher.quanity,
+                createdate: $scope.voucher.createdate,
+                enddate: $scope.voucher.enddate,
+                email: $rootScope.email
+            }
+            $http.put($rootScope.url + "/api/v1/staff/voucher/update/" + $scope.voucher.id, $scope.save,
+                {
+                    headers: {
+                        'Authorization': 'Bearer ' + $rootScope.token
+                    }
+                }).then(function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cập nhật voucher thành công',
+                        text: 'Tuyệt vời!',
+                    });
+                    $location.url("/QuanLyVouCher")
+                })
+                .catch(function (error) {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cập nhật voucher thất bại',
+                        text: 'kiểm tra lai dữ liệu',
+                    });
                 });
-                $location.url("/QuanLyVouCher")
-            })
-            .catch(function (error) {
-                console.log(error)
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Thêm voucher thất bại',
-                    text: 'kiểm tra lai dữ liệu',
+        } else {
+            $scope.voucher.image = review.src
+            if ($scope.voucher.condition == null) {
+                $scope.voucher.condition = 0
+            }
+            $scope.voucher.email = $rootScope.email
+            $http.post($rootScope.url + "/api/v1/staff/voucher/save", $scope.voucher,
+                {
+                    headers: {
+                        'Authorization': 'Bearer ' + $rootScope.token
+                    }
+                }).then(function (response) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thêm voucher thành công',
+                        text: 'Tuyệt vời!',
+                    });
+                    $location.url("/QuanLyVouCher")
+                })
+                .catch(function (error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Thêm voucher thất bại',
+                        text: 'kiểm tra lai dữ liệu',
+                    });
                 });
-            });
+        }
+
     };
 
-    let review = document.getElementsByClassName('review')
+
+
+
     document.getElementById('fileInputfb').onchange = function (e) {
         if (e.target.files.length > 0) {
             let fileType = e.target.files[0].type;
@@ -49,15 +94,16 @@ app.controller("CRUDVoucherController", function ($scope, $location, $http, $roo
             }
             let reader = new FileReader();
             reader.onload = function (event) {
-                // review.src = event.target.result;
                 $scope.uploadfirebase(e.target.files[0]);
             };
             reader.readAsDataURL(e.target.files[0]);
         } else {
-            if (review) {
-                review.src = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/5456834b-ba95-41a9-85b2-4abd4d313c11.png';
-                $scope.image = review.src;
+            if ($scope.check) {
+                review.src = $scope.voucher.image
+            } else {
+                review.src = $scope.image
             }
+
         }
     };
 
@@ -72,10 +118,11 @@ app.controller("CRUDVoucherController", function ($scope, $location, $http, $roo
         return uploadIMG.then((snapshot) => snapshot.ref.getDownloadURL())
             .then((url) => {
                 $scope.image = url;
-                console.log($scope.image)
+                review.src = $scope.image
                 return url;
             });
     };
+
 
 
 
