@@ -1,18 +1,3 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.3
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,13 +15,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-  <!-- CSS Files -->
+
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
@@ -69,18 +48,50 @@
       $rootScope.authorities = []
       $rootScope.fullname = ""
       $rootScope.url = "http://localhost:8080"
+      $rootScope.voucherParam = []
+
+      var firebaseConfig = {
+        apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
+        authDomain: "travel-bee-e0b59.firebaseapp.com",
+        projectId: "travel-bee-e0b59",
+        storageBucket: "travel-bee-e0b59.appspot.com",
+        messagingSenderId: "991526403311",
+        appId: "1:991526403311:web:24e7a3ba76e7d0d769af1a",
+        measurementId: "G-DE29CFQQMY"
+      };
+      var config = firebase.initializeApp(firebaseConfig);
 
     })
 
   </script>
   <script src="js/angular/myApp.js"></script>
+
+  <!--   
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+
+   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.3"></script>  -->
+
   <script src="js/angular/mainController.js"></script>
   <script src="js/angular/feedBackController.js"></script>
   <script src="js/angular/modalFeedback.js"></script>
   <script src="js/angular/loginController.js"></script>
   <script src="js/angular/voucherController.js"></script>
   <script src="js/angular/CRUDVoucherController.js"></script>
-
+   <script src="js/table2excel.js"></script>
 
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
