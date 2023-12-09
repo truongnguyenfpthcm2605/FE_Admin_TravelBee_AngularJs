@@ -306,10 +306,10 @@ id="sidenav-main">
                     <div class="form-group">
                         <label>Tổng số lượng</label>
                         <input type="number" class="form-control" name="txtquantity" ng-value="voucher.quanity" ng-model="voucher.quanity" min="0" ng-required="true">
-                        <span style="color: red; font-size: 15px;" ng-show="formVoucher.txtquantity.$error.min">Giảm giá không được nhập số âm.</span>
-                        <span style="color: red; font-size: 15px;"
-                        ng-show="formVoucher.txtquantity.$dirty && formVoucher.txtquantity.$error.required">Mã voucher không
-                        được bỏ trống</span>
+                            <span style="color: red; font-size: 15px;" ng-show="formVoucher.txtquantity.$error.min">Giảm giá không được nhập số âm.</span>
+                            <span style="color: red; font-size: 15px;"
+                            ng-show="formVoucher.txtquantity.$dirty && formVoucher.txtquantity.$error.required">Mã voucher không
+                            được bỏ trống</span>
                     </div>
             
                     <div ng-if="check" class="form-group">
