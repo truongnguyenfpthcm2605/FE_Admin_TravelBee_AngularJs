@@ -2,10 +2,15 @@ app.config(function ($routeProvider) {
   $routeProvider
     .when("/main", {
       templateUrl: "./pages/main.html",
-      controller: "mainController"
+      controller: "mainController",
     })
     .when("/QuanLyPhanHoi", {
       templateUrl: "./pages/QuanLyPhanHoi.html",
+      controller: "feedBackController",
+    })
+    .when("/modalFeedback", {
+      templateUrl: "./pages/modalFeedback.html",
+      controller: "modalFeedbackController",
     })
     .when("/profile", {
       templateUrl: "./pages/profile.html",
@@ -13,20 +18,21 @@ app.config(function ($routeProvider) {
     .when("/QuanLyVouCher", {
       templateUrl: "./pages/QuanLyVouCher.html",
       controller: "voucherController"
+
     })
     .when("/CRUDVoucher", {
       templateUrl: "./pages/CRUDVoucher.html",
-      controller: "CRUDVoucherController"
+      controller: "CRUDVoucherController",
     })
 
     .when("/CRUDVoucher/:id", {
       templateUrl: "./pages/CRUDVoucher.html",
-      controller: "CRUDVoucherController"
+      controller: "CRUDVoucherController",
     })
 
     .when("/login", {
       templateUrl: "./pages/sign-in.html",
-      controller: "loginController"
+      controller: "loginController",
     })
     .when('/hotel', {
       templateUrl: './pages/QLKhachSan.html'
@@ -41,7 +47,7 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/CRUDQuanLyPhuongTien.html'
     })
     .when('/crudHotel', {
-      templateUrl: './pages/CRUDQuanLyKhachSan.html'
+      templateUrl: './pages/ThemKhachSan.html'
     })
     .when('/CRUDaccount', {
       templateUrl: './pages/CRUDQuanLyTaiKhoan.html'
@@ -77,7 +83,7 @@ app.config(function ($routeProvider) {
     })
 
     .otherwise({
-      redirectTo: "/login"
+      redirectTo: "/login",
     });
 });
 app.run(function ($rootScope) {
