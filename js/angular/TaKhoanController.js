@@ -1,24 +1,26 @@
-app.controller("voucherController", function ($scope, $location, $http, $rootScope) {
+app.controller("TaiKhoanController", function ($scope, $location, $http, $rootScope) {
     $scope.current = []
     $scope.findAll = function () {
-        $http.get($rootScope.url + "/api/v1/staff/voucher/all", {
+        $http.get($rootScope.url + "/api/v1/account/all", {
             headers: {
                 'Authorization': 'Bearer ' + $rootScope.token
             }
         }).then(function (response) {
-            $rootScope.voucherParam = response.data
-            $scope.current = $rootScope.voucherParam
+            $rootScope.account = response.data
+            $scope.current = $rootScope.account
+            console.log($rootScope.account)
         })
             .catch(function (error) {
 
             });
+
     }
     $scope.findAll()
 
 
     $scope.deleteid = function (id) {
         Swal.fire({
-            title: "Bạn có muốn xóa voucher này ?",
+            title: "Bạn có muốn xóa phương tiện này ?",
             text: "sẽ không thể phục hồi lại được!",
             icon: "warning",
             showCancelButton: true,
@@ -27,14 +29,14 @@ app.controller("voucherController", function ($scope, $location, $http, $rootSco
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                $http.delete($rootScope.url + "/api/v1/admin/voucher/" + id, {
+                $http.delete($rootScope.url + "/api/v1/admin/transport/" + id, {
                     headers: {
                         'Authorization': 'Bearer ' + $rootScope.token
                     }
                 }).then(function (response) {
                     Swal.fire({
                         title: "Deleted!",
-                        text: "Voucher đã được delete thành công.",
+                        text: "Phương tiện đã được delete thành công.",
                         icon: "success"
                     });
                     $scope.removeElementById(id)
@@ -44,7 +46,7 @@ app.controller("voucherController", function ($scope, $location, $http, $rootSco
                         console.log(error)
                         Swal.fire({
                             icon: 'error',
-                            title: 'xóa voucher thất bại',
+                            title: 'xóa phương tiện thất bại',
                             text: 'kiểm tra lai dữ liệu',
                         });
                     });
@@ -60,9 +62,9 @@ app.controller("voucherController", function ($scope, $location, $http, $rootSco
                 voucher.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
         });
     };
-    $scope.exportExcel = function(){
+    $scope.exportExcel = function () {
         let table2excel = new Table2Excel();
-        table2excel.export(document.querySelector("#table-voucher"),'Danh Sách Voucher');
+        table2excel.export(document.querySelector("#table-pt"), 'Danh Sách phương tiện');
     }
     $scope.removeElementById = function (id) {
         $rootScope.voucherParam = $rootScope.voucherParam.filter(function (item) {
@@ -70,7 +72,7 @@ app.controller("voucherController", function ($scope, $location, $http, $rootSco
         });
     };
 
-    
+
 
 
 
