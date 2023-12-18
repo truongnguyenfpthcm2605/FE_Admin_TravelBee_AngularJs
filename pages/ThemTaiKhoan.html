@@ -157,7 +157,7 @@
               </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link  " href="#!account">
+              <a class="nav-link  active " href="#!account">
                   <div
                       class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                       <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1"
@@ -187,7 +187,7 @@
           </li>
 
           <li class="nav-item">
-              <a class="nav-link active " href="#!transport">
+              <a class="nav-link  " href="#!transport">
                   <div
                       class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                       <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1"
@@ -274,7 +274,7 @@
               </a>
           </li>
           <li class="nav-item mt-3">
-              <a ng-click="logout()"  class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: red;"><i class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
+              <a href="ok" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: red;"><i class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
           </li>
 
       </ul>
@@ -287,9 +287,9 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
                 <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">QuanLyPhuongTien</li>
+                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">QuanLyKhachSan</li>
               </ol>
-              <h6 class="font-weight-bolder mb-0">QuanLyPhuongTien</h6>
+              <h6 class="font-weight-bolder mb-0">QuanLyKhachSan</h6>
             </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
               <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -396,52 +396,59 @@
             </div>
           </div>
         </nav>
-        <div class="container-fluid py-4">
+        <div class="container-fluid py-4" >
           <div class="row">
             <div class="col-12">
               <div class="card mb-4">
                 <div class="card-header pb-0">
-                  <h6>Quản Lý phương Tiện</h6>
+                  <h6>Quản Lý Tài Khoản</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
-                    <table class="table align-items-center mb-0">
-                        <div class="panel panel-primary">
-                            <div class="panel-body">
-                                <div class="form-group">
-                                  <label for="Title">Title:</label>
-                                  <input required="true" type="text" class="form-control" id="Title">
-                                </div>
-                                <div class="form-group">
-                                  <label for="Phone">Phone:</label>
-                                  <input required="true" type="text" class="form-control" id="Phone">
-                                </div>
-                                <div class="form-group">
-                                    <label for="Address">Address:</label>
-                                    <input type="text" class="form-control" id="Address">
+                  <div class="table-responsive p-0">
+                      <table class="table align-items-center mb-0">
+                          <div class="panel panel-primary">
+                              <div class="panel-body">
+                                  <div class="form-group">
+                                    <label for="usr">FullName:</label>
+                                    <input required="true" type="text" class="form-control" id="usr">
                                   </div>
                                   <div class="form-group">
-                                    <label for="Description">Description:</label>
-                                    <input type="text" class="form-control" id="Description">
+                                    <label for="email">Email:</label>
+                                    <input required="true" type="email" class="form-control" id="email">
                                   </div>
                                   <div class="form-group">
+                                      <label for="username">UserName:</label>
+                                      <input type="text" class="form-control" id="username">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="password">Password:</label>
+                                      <input type="password" class="form-control" id="password">
+                                    </div>
+                                  <div class="form-group">
+                                    <label for="birthday">Birthday:</label>
+                                    <input type="date" class="form-control" id="birthday">
+                                  </div><div class="form-group">
                                     <label class="custom-file-label" for="validatedCustomFile">Choose images :</label>
                                     <input type="file" class="custom-file-input" id="validatedCustomFile" required>
                                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                                   </div>
-                                  <div class="form-group">
-                                    <label for="Role">IsActive:</label>
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                        <label for="Full">Full</label>
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                        <label for="Empty">Empty</label>
-                                      </div>
-                                <button class="btn btn-danger">Update</button>
-                                <button class="btn btn-light">Cancel</button>
-                            </div>
-                        </div>
-                    </table>
+                                    <div class="form-group">
+                                      <label for="Role">Role:</label>
+                                          <input type="radio" aria-label="Radio button for following text input">
+                                          <label for="admin">admin</label>
+                                          <input type="radio" aria-label="Radio button for following text input">
+                                          <label for="user">user</label>
+                                        </div>
+                                  <button class="btn btn-danger">Save</button>
+                                  <button class="btn btn-light">Cancel</button>
+                              </div>
+                          </div>
+                      </table>
+                  </div>
                 </div>
-          </div> 
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -541,3 +548,4 @@
 </body>
 
 </html>
+
