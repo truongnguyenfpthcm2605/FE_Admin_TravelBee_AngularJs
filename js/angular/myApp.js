@@ -75,7 +75,8 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/QuanLyTour.html'
     })
     .when('/quanLyDiaDiem', {
-      templateUrl: './pages/quanLyDiaDiem.html'
+      templateUrl: './pages/quanLyDiaDiem.html',
+      
     })
 
     .when('/ticket', {
