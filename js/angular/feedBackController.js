@@ -29,11 +29,11 @@ app.controller(
       $http
         .post(
           $rootScope.url +
-            "/api/v1/feedback/reply" +
-            "?id=" +
-            id +
-            "&content=" +
-            content,
+          "/api/v1/feedback/reply" +
+          "?id=" +
+          id +
+          "&content=" +
+          content,
           $scope.feedback,
 
           {

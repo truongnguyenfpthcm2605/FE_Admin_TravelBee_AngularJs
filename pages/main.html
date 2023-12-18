@@ -281,7 +281,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Danh Thu Hôm Nay</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        {{todayRevenue | currency: ''}}
+                                        {{todayRevenue |  currency:'':0 }}
 
                                     </h5>
                                 </div>
@@ -365,11 +365,7 @@
         <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card">
-                    <select id="lineChart" class="btn btn-light" style="width: 200px; margin: 5px;"
-                        ng-model="selectedDay" ng-change="lineChartAcess(selectedDay)">
-                        <option value="7">Hiện Tại</option>
-                        <option value="14">7 Ngày trước</option>
-                    </select>
+                   
                     <canvas style="width: 80% ;margin:  0 auto;" id="myChart"></canvas>
                 </div>
             </div>

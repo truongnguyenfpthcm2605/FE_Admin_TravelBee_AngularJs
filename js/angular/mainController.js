@@ -4,6 +4,8 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
     $scope.ticketToday = ''
     $scope.countAccount = ''
     $scope.countTour = ''
+    $scope.ordersactive = ''
+    $scope.ordersUhactive = ''
 
     function getdate() {
         let a = new Date();
@@ -97,7 +99,7 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
 
     $scope.lineChartAcess(6)
 
-    $scope.ordersactive = ''
+
     $http.get($rootScope.url + '/api/v1/staff/orders/countactive', {
         headers: {
             'Authorization': 'Bearer ' + $rootScope.token
@@ -105,7 +107,7 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
     }).then(function (response) {
         $scope.ordersactive = response.data
     })
-    $scope.ordersUhactive = ''
+
     $http.get($rootScope.url + '/api/v1/staff/orders/countuhactive', {
         headers: {
             'Authorization': 'Bearer ' + $rootScope.token
@@ -113,6 +115,7 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
     }).then(function (response) {
         $scope.ordersUhactive = response.data
     })
+    
 
     const doughnut = document.getElementById('doughnut');
     $scope.doughnutChartOrders = function () {
@@ -135,12 +138,18 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
             type: 'doughnut',
             data: data,
         };
-        const chart = new Chart(doughnut, config);
+        try {
+            new Chart(doughnut, config);
 
+        } catch (error) {
+                  
+        }
     }
-    setInterval(function () {
+    
+    setInterval(function(){
         $scope.doughnutChartOrders()
-    }, 1000)
+    },2000)
+
 
 
     const linemoney = document.getElementById('linemoney');
@@ -165,7 +174,7 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
             type: 'line',
             data: data,
         };
-        const chart = new Chart(linemoney, config);
+        new Chart(linemoney, config);
     })
 
     $scope.trending =[]
@@ -177,17 +186,6 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
         $scope.trending = response.data
     
     })
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
