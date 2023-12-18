@@ -62,7 +62,8 @@ app.config(function ($routeProvider) {
     })
 
     .when('/themDiaDiem', {
-      templateUrl: './pages/formThemDiaDiem.html'
+      templateUrl: './pages/formThemDiaDiem.html',
+      controller: 'test123'
     })
     .when('/ThayDoiThongtour', {
       templateUrl: './pages/thayDoiThongTinTour.html'
