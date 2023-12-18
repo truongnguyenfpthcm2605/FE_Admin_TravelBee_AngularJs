@@ -47,7 +47,7 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/CRUDQuanLyPhuongTien.html'
     })
     .when('/crudHotel', {
-      templateUrl: './pages/CRUDQuanLyKhachSan.html'
+      templateUrl: './pages/ThemKhachSan.html'
     })
     .when('/CRUDaccount', {
       templateUrl: './pages/CRUDQuanLyTaiKhoan.html'
