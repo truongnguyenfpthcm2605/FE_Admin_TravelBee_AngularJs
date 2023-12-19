@@ -135,7 +135,7 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
             type: 'doughnut',
             data: data,
         };
-        const chart = new Chart(doughnut, config);
+        // const chart = new Chart(doughnut, config);
 
     }
     setInterval(function () {

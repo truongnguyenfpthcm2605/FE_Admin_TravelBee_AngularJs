@@ -65,6 +65,10 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/formThemDiaDiem.html',
       controller: 'test123'
     })
+    .when('/UpdateLoation', {
+      templateUrl: './pages/UpdateLoation.html',
+      controller: 'UpdateLoation'
+    })
     .when('/ThayDoiThongtour', {
       templateUrl: './pages/thayDoiThongTinTour.html'
     })

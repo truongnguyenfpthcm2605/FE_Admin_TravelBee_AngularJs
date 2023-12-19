@@ -176,3 +176,111 @@ select:valid {
     padding-left: 16px;
     display: flex;
 }
+.buttonform{
+    border: 0;
+    outline: 0;
+    padding: 1em;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    background-color: #e74c3c;
+    margin-top: 1em;
+    font-family: "Merriweather", sans-serif;
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    resize: none;
+
+}
+.buttonform:hover{
+    outline: 1;
+    background-color: #ba5959;
+}
+/* Đặt container cho các radio buttons */
+
+  
+
+.radio-container {
+    display: flex;
+    margin-top: 20px;
+    align-items: center; /* Căn giữa các phần tử theo chiều dọc */
+    margin-bottom: 20px; /* Khoảng cách giữa các dòng, điều chỉnh theo ý muốn */
+  }
+  
+  /* Đặt nhãn và radio buttons */
+  .radio-container label,
+  .radio-container input[type="radio"] {
+    margin-right: 20px; /* Khoảng cách giữa label và radio */
+  }
+  
+  .radio-container label{
+    font-family: "Merriweather", sans-serif;
+    font-size: 16px;
+  }
+  /* Căn chỉnh nhãn cho trạng thái */
+  .radio-container .form-check-label {
+    min-width: 100px; /* Đặt chiều rộng tối thiểu cho nhãn */
+  }
+  
+  /* Căn chỉnh nút submit */
+  button[type="submit"] {
+    width: 100%; /* Chiều rộng nút bằng với container */
+    height: 53px; /* Chiều cao nút, điều chỉnh theo ý muốn */
+    margin-top: 20px; /* Khoảng cách trên nút submit */
+  }
+  .form-check:not(.form-switch) .form-check-input[type="radio"]{
+    margin-top: 26px;
+    position: relative;
+
+  }
+  .radioo{ 
+    margin-left: -30px !important;
+  }
+  .abc{ 
+    margin-left: 100px !important;
+  }
+ /* Tùy chỉnh radio button */
+.form-check-input {
+    /* Ẩn radio button mặc định */
+    opacity: 0;
+    /* Vị trí tuyệt đối để đè lên pseudo-element sau đó */
+    position: absolute;
+  }
+  
+  /* Tạo pseudo-element để hiển thị radio button tùy chỉnh */
+  .form-check-input + label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid #ddd; /* Màu viền không được chọn */
+    background-color: #fff; /* Màu nền không được chọn */
+    /* Đặt vị trí tương đối để căn chỉnh với label */
+    position: relative;
+    top: 4px;
+  }
+  
+  /* Khi radio button được chọn, thay đổi màu của pseudo-element */
+  .form-check-input:checked + label::before {
+    border-color: rgba(255, 68, 0, 0.692); /* Màu viền khi được chọn */
+    background-color: rgba(255, 68, 0, 0.696); /* Màu nền khi được chọn */
+  }
+  
+  /* Tùy chỉnh thêm cho trạng thái khi được chọn, ví dụ thêm dấu kiểm */
+  .form-check-input:checked + label::after {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fff; /* Màu của dấu kiểm (ở đây là trắng) */
+    /* Căn giữa dấu kiểm trong viền */
+    position: absolute;
+    top: 7px;
+    left: 4px;
+  }
+  

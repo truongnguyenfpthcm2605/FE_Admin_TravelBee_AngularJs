@@ -39,6 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="/js/angular/formthemdiadiem.js"></script>
 
 </head>
 
@@ -474,8 +475,8 @@
                                                 <span>{{ item.createdate | date:'dd/MM/yyyy' }}</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#!themDiaDiem" class="text-secondary font-weight-bold text-xs"
-                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="" class="text-secondary font-weight-bold text-xs"
+                                                    data-toggle="tooltip" data-original-title="Edit user" ng-click="Edit(item.id)">
                                                     Edit
                                                 </a>
                                             </td>
@@ -512,6 +513,7 @@
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    
     <!-- <script src="../assets/js/plugins/chartjs.min.js"></script> -->
     <script>
         let app = angular.module("app", ['ngRoute'])

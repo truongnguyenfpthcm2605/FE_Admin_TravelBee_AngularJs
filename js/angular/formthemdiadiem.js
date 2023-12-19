@@ -1,8 +1,9 @@
-angular.module('app').controller('test123', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+angular.module('app').controller('test123', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
     // Your controller's code...
     // Controller logic
 
     $scope.s = ''
+    $scope.headerText = "Thêm địa điểm"; 
     let uploadPromises = [];
     var firebaseConfig = {
         apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
@@ -58,22 +59,34 @@ angular.module('app').controller('test123', ['$scope', '$http', '$rootScope', fu
                 list = downloadURLs;
 
                 console.log(list.join(","))
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Images uploaded successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
             })
 
             .catch((error) => {
-                console.error("Lỗi khi tải lên hình ảnh: " + error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Failed to upload images: ' + error,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
             });
     }
 
 
     // Function to submit form
     $scope.submitForm = function () {
+        var imagesString = list.join(",");
         // Assuming you have model bindings for these fields in your form
         var locationData = {
             title: $scope.title,
             address: $scope.address,
             description: $scope.description,
-            images: list, // Array of image URLs from Firebase
+            images: imagesString, // Array of image URLs from Firebase
             latitude: $scope.latitude,
             longitude: $scope.longitude,
             email: $scope.email // Assuming you have the user's email
@@ -88,13 +101,31 @@ angular.module('app').controller('test123', ['$scope', '$http', '$rootScope', fu
                 'Authorization': 'Bearer ' + $rootScope.token
             }
         })
-        .then(function(response) {
-            console.log('Data submitted successfully:', response.data);
-            // Add any success notification or actions here
-        })
-        .catch(function(error) {
-            console.error('Error submitting data:', error);
-            // Add error handling logic here, possibly similar to quanlydiadiemController
-        });
-}}]);
+            .then(function (response) {
+                console.log('Data submitted successfully:', response.data);
+                Swal.fire({
+                    title: 'Cập nhật thành công!',
+                    text: 'Bạn sẽ được đưa về trang chính sau 3s.',
+                    icon: 'success',
+                    timer: 3000,
+                    willClose: () => {
+                        $location.path('/quanLyDiaDiem');
+                        $scope.$apply(); // Needed to trigger a digest cycle
+                    }
+                });
+                // Add any success notification or actions here
+            })
+            .catch(function (error) {
+                console.error('Error submitting data:', error);
+                // Add error handling logic here, possibly similar to quanlydiadiemController
+                Swal.fire({
+                    title: 'Submission Error!',
+                    text: 'There was a problem saving the location: ' + error,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+    }
+    
+}]);
 
