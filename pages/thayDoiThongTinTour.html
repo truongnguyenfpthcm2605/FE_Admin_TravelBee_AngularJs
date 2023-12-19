@@ -415,11 +415,11 @@
       <h4>Thay đổi thông tin tour</h4>
       <form class="cf">
         <div class="half left cf">
-          <input type="text" id="input-name" placeholder="Nhập họ tên">
-          <input type="email" id="input-email" placeholder="Nhập Email ">
-          <input type="text" id="CCCD" placeholder="Nhập số CCCD">
-          <input type="text" id="phonenumber" placeholder="Nhập số điện thoại">
-          <input type="submit" value="Cập nhật" class="bg-primary" id="input-submit">
+          <input type="text" id="input-name" ng-model="formData.title" placeholder="Nhập tên chuyến đi">
+          <input type="text" id="input-dis" ng-model="formData.description" placeholder="Nhập mô tả ">
+          <input type="text" id="price" ng-model="formData.price" placeholder="nhập Giá">
+          <input type="email" id="input-email" ng-model="formData.email" placeholder="Nhập Email " disabled>
+          <input type="submit" value="Cập nhật" class="bg-primary"  ng-click="updateLocation()" id="input-submit">
         </div>
       </form>
     </div>
@@ -432,16 +432,7 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
-
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
+  <script src="../js/angular/thayDoiThongTinTour.js"></script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

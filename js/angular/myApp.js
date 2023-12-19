@@ -69,15 +69,17 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/UpdateLoation.html',
       controller: 'UpdateLoation'
     })
-    .when('/ThayDoiThongtour', {
-      templateUrl: './pages/thayDoiThongTinTour.html'
+    .when('/ThayDoiThongTintour', {
+      templateUrl: './pages/thayDoiThongTinTour.html',
+      controller: 'thayDoiThongTinTour'
     })
     .when('/themtourdulich', {
       templateUrl: './pages/themTourDuLich.html'
     })
 
     .when('/QuanLyTour', {
-      templateUrl: './pages/QuanLyTour.html'
+      templateUrl: './pages/QuanLyTour.html',
+      controller: 'QuanLyTour'
     })
     .when('/quanLyDiaDiem', {
       templateUrl: './pages/quanLyDiaDiem.html',
