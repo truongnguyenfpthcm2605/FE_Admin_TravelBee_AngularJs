@@ -29,7 +29,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                $http.delete($rootScope.url + "/api/v1/admin/transport/" + id, {
+                $http.delete($rootScope.url + "/api/v1/transport/" + id, {
                     headers: {
                         'Authorization': 'Bearer ' + $rootScope.token
                     }
@@ -40,7 +40,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
                         icon: "success"
                     });
                     $scope.removeElementById(id)
-                    $scope.current = $rootScope.voucherParam
+                    $scope.current = $rootScope.transportParam
                 })
                     .catch(function (error) {
                         console.log(error)
@@ -57,9 +57,9 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
 
     $scope.searchKeyword = function (keyword) {
         const searchInput = keyword || '';
-        $scope.current = $rootScope.voucherParam.filter(function (voucher) {
-            return voucher.id.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
-                voucher.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
+        $scope.current = $rootScope.transportParam.filter(function (transport) {
+            return transport.id.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+                transport.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
         });
     };
     $scope.exportExcel = function () {
@@ -67,7 +67,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
         table2excel.export(document.querySelector("#table-pt"), 'Danh Sách phương tiện');
     }
     $scope.removeElementById = function (id) {
-        $rootScope.voucherParam = $rootScope.voucherParam.filter(function (item) {
+        $rootScope.transportParam = $rootScope.transportParam.filter(function (item) {
             return item.id !== id;
         });
     };

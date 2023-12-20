@@ -39,7 +39,7 @@ app.controller("CRUDHotelController", function ($scope, $location, $http, $rootS
                         title: 'Cập nhật hotel thành công',
                         text: 'Tuyệt vời!',
                     });
-                    $location.url("/QLyKhachSan")
+                    $location.url("/QLKhachSan")
                 })
                 .catch(function (error) {
 
@@ -51,8 +51,8 @@ app.controller("CRUDHotelController", function ($scope, $location, $http, $rootS
                 });
         } else {
             $scope.hotel.image = review.src
-            if ($scope.hotel.condition == null) {
-                $scope.hotel.condition = 0
+            if ($scope.hotel.active == null) {
+                $scope.hotel.active = 0
             }
             $scope.hotel.email = $rootScope.email
             $http.post($rootScope.url + "/api/v1/hotel/save", $scope.hotel,
@@ -66,7 +66,7 @@ app.controller("CRUDHotelController", function ($scope, $location, $http, $rootS
                         title: 'Thêm hotel thành công',
                         text: 'Tuyệt vời!',
                     });
-                    $location.url("/QLyKhachSan")
+                    $location.url("/QLKhachSan")
                 })
                 .catch(function (error) {
                     Swal.fire({

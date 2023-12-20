@@ -3,12 +3,12 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
+        <!-- <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
             target="_blank">
             <img src="https://firebasestorage.googleapis.com/v0/b/travel-bee-e0b59.appspot.com/o/logo.png?alt=media&token=9b7bf685-a7ff-49d9-9413-abdeee4cb722"
                 class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-1 font-weight-bold">Travel Bee</span>
-        </a>
+        </a> -->
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
@@ -232,9 +232,7 @@
                 </a>
             </li>
             <li class="nav-item mt-3">
-
-                <a ng-click="logout()" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
-
+                <a href="ok" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
                     style="color: red;"><i class="fa-solid fa-power-off"
                         style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
             </li>
@@ -425,7 +423,8 @@
                                 <tbody>
                                     <tr style="text-align: center;" ng-repeat="item in trending">
                                         <td>
-                                           <img src="{{item[6].split(',')[3]}}" alt="" style="width: 150px; border-radius: 10px;">
+                                            <img src="{{item[6].split(',')[3]}}" alt=""
+                                                style="width: 150px; border-radius: 10px;">
                                         </td>
                                         <td>{{item[4]}}</td>
                                         <td>{{item[0]}} VND</td>
@@ -433,8 +432,8 @@
                                         <td>{{item[2]}} - {{item[3]}}</td>
                                         <td>{{item[5]}}</td>
                                     </tr>
-                                 <tr></tr>
-                                 <tr></tr>
+                                    <tr></tr>
+                                    <tr></tr>
                                     <tr>
                                         <td>
                                             <div class="d-flex px-2 py-1">
