@@ -16,6 +16,12 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
     $scope.findAll()
 
 
+    // $scope.Edit = function(id) {
+    //     console.log("id is  " + id);
+    //     $location.path('/CRUDQuanLyPhuongTien');
+    //     $location.search({id: id}); 
+    //   }
+
     $scope.deleteid = function (id) {
         Swal.fire({
             title: "Bạn có muốn xóa khách này ?",

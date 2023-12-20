@@ -50,6 +50,11 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/QLTaiKhoan.html',
       controller:'TaiKhoanController'
     })
+    .when('/CRUDaccount', {
+      templateUrl: './pages/ThemTaiKhoan.html',
+      controller:'TaiKhoanController'
+
+    })
     .when('/transport', {
       templateUrl: './pages/QLPhuongTien.html',
       controller:'PhuongTienController'
@@ -63,9 +68,7 @@ app.config(function ($routeProvider) {
       controller:'CRUDTRansportController'
     })
     
-    .when('/CRUDaccount', {
-      templateUrl: './pages/CRUDQuanLyTaiKhoan.html'
-    })
+    
 
     .when('/danhsachve', {
       templateUrl: './pages/DanhSachVe.html'

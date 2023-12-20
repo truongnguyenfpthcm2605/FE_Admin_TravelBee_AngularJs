@@ -8,12 +8,6 @@ app.controller("TaiKhoanController", function ($scope, $location, $http, $rootSc
         }).then(function (response) {
             $rootScope.accountParam = response.data
             $scope.current = $rootScope.accountParam
-            
-            //test
-            // console.log("đây là data chưa nạp",response.data);
-            // const activeLocations = response.data;
-            //  $scope.ls = activeLocations; 
-            //  console.log("API Data Tour:", activeLocations);
              console.log("token Data:", $rootScope.token);
         })
             .catch(function (error) {
@@ -21,7 +15,42 @@ app.controller("TaiKhoanController", function ($scope, $location, $http, $rootSc
     }
     $scope.findAll()
 
+    $scope.deleteid = function (id) {
+        Swal.fire({
+            title: "Bạn có muốn xóa khách này ?",
+            text: "sẽ không thể phục hồi lại được!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $http.delete($rootScope.url + "/api/v1/account/delete/" + id, {
+                    headers: {
+                        'Authorization': 'Bearer ' + $rootScope.token
+                    }
+                }).then(function (response) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Tài khoản đã được vô hiệu hóa thành công.",
+                        icon: "success"
+                    });
+                    $scope.removeElementById(id)
+                    $scope.current = $rootScope.accountParam
+                })
+                    .catch(function (error) {
+                        console.log(error)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'vô hiệu hóa thất bại',
+                            text: 'kiểm tra lai dữ liệu',
+                        });
+                    });
 
+            }
+        });
+    }
     $scope.searchKeyword = function (keyword) {
         const searchInput = keyword || '';
         $scope.current = $rootScope.accountParam.filter(function (account) {
