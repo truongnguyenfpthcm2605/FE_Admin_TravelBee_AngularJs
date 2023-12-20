@@ -1,9 +1,9 @@
-angular.module('app').controller('themtourdulich', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
+
+angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
     // Your controller's code...
     // Controller logic
-
     $scope.s = ''
-    $scope.headerText = "Thêm Tour du lịch"; 
+    $scope.headerText = "Thêm tour du lịch"; 
     let uploadPromises = [];
     var firebaseConfig = {
         apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
@@ -84,8 +84,8 @@ angular.module('app').controller('themtourdulich', ['$scope', '$http', '$locatio
         // Assuming you have model bindings for these fields in your form
         var locationData = {
             title: $scope.title,
-            address: $scope.description,
-            description: $scope.price,
+            description: $scope.description,
+            price: $scope.price,
             images: imagesString, // Array of image URLs from Firebase
             email: $scope.email // Assuming you have the user's email
         };
@@ -107,7 +107,7 @@ angular.module('app').controller('themtourdulich', ['$scope', '$http', '$locatio
                     icon: 'success',
                     timer: 3000,
                     willClose: () => {
-                        $location.path('/quanLyDiaDiem');
+                        $location.path('/QuanLyTour');
                         $scope.$apply(); // Needed to trigger a digest cycle
                     }
                 });

@@ -74,7 +74,8 @@ app.config(function ($routeProvider) {
       controller: 'thayDoiThongTinTour'
     })
     .when('/themtourdulich', {
-      templateUrl: './pages/themTourDuLich.html'
+      templateUrl: './pages/themTourDuLich.html',
+      controller: 'themTourDuLich'
     })
 
     .when('/QuanLyTour', {
