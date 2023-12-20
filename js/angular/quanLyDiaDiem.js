@@ -11,10 +11,8 @@ app.controller("quanlydiadiemController", function ($scope, $location, $http, $r
         })
         .then(response => {
             console.log(response.data);
-            const activeLocations = response.data.filter(l => l.isactive);
-             $scope.ls = activeLocations; 
-            // $rootScope.locations = response.data;
-            // $scope.ls = $rootScope.locations;
+            activeLocations = response.data.filter(l => l.isactive);
+             $scope.ls = response.data; 
              console.log("API Data:", activeLocations);
              console.log("token Data:", $rootScope.token);
         })

@@ -29,7 +29,7 @@ app.controller("quanLyVe", function ($scope, $location, $http, $rootScope, $cook
         console.log("đây là token " + $rootScope.token)
         $http.get($rootScope.url + "/api/v1/orders/all", {
             headers: {
-                'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0cnVvbmdudnBzMjQwODNAZnB0LmVkdS52biIsImlhdCI6MTcwMzA2NjgyNiwiZXhwIjoxNzAzMTUwODI2fQ.wka6D8JaqQ43WS_w9HtmJz8CcGye68BogjJolO0DaDI'
+                'Authorization': 'Bearer ' + $rootScope.token
             }
 
         })
