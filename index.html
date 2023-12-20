@@ -43,6 +43,21 @@
 
   <script>
     let app = angular.module("app", ['ngRoute', 'ngCookies'])
+    // // Xóa tất cả cookies
+    // var cookies = document.cookie.split(";");
+    // for (var i = 0; i < cookies.length; i++) {
+    //   var cookie = cookies[i];
+    //   var eqPos = cookie.indexOf("=");
+    //   var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    //   document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    // }
+
+    // // Xóa session storage
+    // sessionStorage.clear();
+
+    // // Xóa local storage (Lưu ý: điều này sẽ xóa tất cả dữ liệu lưu trữ cục bộ, không chỉ session)
+    // localStorage.clear();
+
     app.controller("homeController", function ($scope, $rootScope, $http, $location, $routeParams) {
       $rootScope.token = ""
       $rootScope.email = ""
@@ -64,32 +79,32 @@
 
 
       $scope.logout = function () {
-				$http.get($rootScope.url + "/api/v1/auth/logout")
-					.then(response => {
-						$rootScope.fullname = ""
-						$rootScope.email = ""
-						$rootScope.token = ""
-						$rootScope.authorities = []
-						Swal.fire({
-							title: "Đăng xuất Thành Công",
-							width: 600,
-							icon: "success",
-							padding: "3em",
-							color: "#716add",
-							background: "#fff url(/images/trees.png)",
-							backdrop: `
+        $http.get($rootScope.url + "/api/v1/auth/logout")
+          .then(response => {
+            $rootScope.fullname = ""
+            $rootScope.email = ""
+            $rootScope.token = ""
+            $rootScope.authorities = []
+            Swal.fire({
+              title: "Đăng xuất Thành Công",
+              width: 600,
+              icon: "success",
+              padding: "3em",
+              color: "#716add",
+              background: "#fff url(/images/trees.png)",
+              backdrop: `
 							rgba(0,0,123,0.4)
 							url("https://i.pinimg.com/originals/5b/cb/d0/5bcbd0bd7c033c9d6f0ef6bf96effd72.gif")
 							left top
 							no-repeat
 							`
-						});
-						$location.path('/login');
-					})
-					.catch(error => {
+            });
+            $location.path('/login');
+          })
+          .catch(error => {
 
-					})
-			}
+          })
+      }
 
 
 
@@ -103,17 +118,15 @@
   <script src="js/angular/loginController.js"></script>
   <script src="js/angular/voucherController.js"></script>
   <script src="js/angular/CRUDVoucherController.js"></script>
-
-  <script src="js/angular/PhuongTienController.js"></script>
-  <script src="js/angular/TaKhoanController.js"></script>
-   <script src="js/table2excel.js"></script>
-   <script src="js/angular/KhachSanController.js"></script>
-   <script src="js/angular/PhuongTienController.js"></script>
-   <script src="js/angular/TaKhoanController.js"></script> 
-
-
-
-   <script src="js/table2excel.js"></script>
+  <script src="js/table2excel.js"></script>
+  <script src="js/angular/quanLyDiaDiem.js"></script>
+  <script src="js/angular/formthemdiadiem.js"></script>
+  <script src="js/angular/UpdateLoation.js"></script>
+  <script src="js/angular/quanLyTour.js"></script>
+  <script src="js/angular/thayDoiThongTinTour.js"></script>
+  <script src="js/angular/themtourdulich.js"></script>
+  <script src="js/angular/quanLyVe.js"></script>
+  <script src="js/angular/danhsachve.js"></script>
 
   <!-- Bootstrap CSS -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">

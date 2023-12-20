@@ -409,19 +409,20 @@
 
     <!-- End Navbar -->
      <!--table quan ly ve-->
-     <div class="container-fluid py-4" style="overflow-x: hidden;">
+     <div class="container-fluid py-4" style="overflow-x: hidden;" >
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>TPHCM <i class="fa-solid fa-arrow-right"></i> Hà Nội</h6>
+              <h6>
+                {{Ticket.plantour.tour.title}}</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Người Đặt Vé</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">QR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Người Đặt Vé</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số Lượng Người
                       </th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Đơn giá</th>
@@ -432,77 +433,26 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr ng-repeat="item in Ticket">
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="{{item.qrcode}}" class="avatar avatar-sm me-3" alt="user1" width="100%" height="100%">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <a class="text-xs text-secondary mb-0 mail" href="mailto:email@example.com"><span>email:
-                              </span>email@example.com</a>
+                            <a class="text-xs text-secondary mb-0 mail" href="mailto:{{item.email}}"><span>email:
+                              </span>{{item.email}}</a>
                             <a class="text-xs text-secondary mb-0 tel" href="tel:+84123xxxxxx"><span>phone:
-                              </span>071232423</a>
-                            <p class="text-xs text-secondary mb-0 CCCD"><span>CCCD: </span> 0812345555</p>
+                              </span>{{item.numberphone}}</a>
+                            <p class="text-xs text-secondary mb-0 CCCD"><span>CCCD: </span> {{item.cccd}}</p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-secondary text-x font-weight-bold mb-0">6</p>
+                        <p class="text-secondary text-x font-weight-bold mb-0">{{item.member}}</p>
                       </td>
                       <td>
-                        <p class="text-secondary text-x font-weight-bold mb-0">1.000.000VNĐ</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-    
-                        <select class="badge badge-sm bg-gradient-success "
-                          onchange="return confirm('Bạn có chắc chắn muốn thay đổi?')">
-                          <option class="bg-secondary">chưa thanh toán</option>
-                          <option class="bg-secondary">Đã Thanh toán</option>
-                        </select>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="#!/ThayDoiThongTinVe" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                      <td class="align-middle">
-                        <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          <i class="fa-solid fa-trash-can text-sm"></i>
-                        </a>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <button STYLE="border-radius: 5px;display: block"> <i class="fa-solid fa-print"></i></button>
-                      </td>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <a class="text-xs text-secondary mb-0 mail" href="mailto:email@example.com"><span>email:
-                              </span>email@example.com</a>
-                            <a class="text-xs text-secondary mb-0 tel" href="tel:+84123xxxxxx"><span>phone:
-                              </span>071232423</a>
-                            <p class="text-xs text-secondary mb-0 CCCD"><span>CCCD: </span> 0812345555</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-secondary text-x font-weight-bold mb-0">6</p>
-                      </td>
-                      <td>
-                        <p class="text-secondary text-x font-weight-bold mb-0">1.000.000VNĐ</p>
+                        <p class="text-secondary text-x font-weight-bold mb-0">{{item.price | currency:'':0}} VNĐ</p>
                       </td>
                       <td class="align-middle text-center text-sm">
                     
@@ -512,16 +462,10 @@
                         </select>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{item.createdate | date:'dd/MM/yyyy'}}</span>
                       </td>
                       <td class="align-middle">
-                        <a href="#!/ThayDoiThongTinVe" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                      <td class="align-middle">
-                        <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"ng-click="deleteTiket(item.id)">
                           <i class="fa-solid fa-trash-can text-sm"></i>
                         </a>
                       </td>
@@ -540,103 +484,20 @@
     </div>
      <!--end table quan ly ve-->
   </main>
-  <div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-      <i class="fa fa-cog py-2"> </i>
-    </a>
-    <div class="card shadow-lg ">
-      <div class="card-header pb-0 pt-3 ">
-        <div class="float-start">
-          <h5 class="mt-3 mb-0">Soft UI Configurator</h5>
-          <p>See our dashboard options.</p>
-        </div>
-        <div class="float-end mt-4">
-          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-            <i class="fa fa-close"></i>
-          </button>
-        </div>
-        <!-- End Toggle Button -->
-      </div>
-      <hr class="horizontal dark my-1">
-      <div class="card-body pt-sm-3 pt-0">
-        <!-- Sidebar Backgrounds -->
-        <div>
-          <h6 class="mb-0">Sidebar Colors</h6>
-        </div>
-        <a href="javascript:void(0)" class="switch-trigger background-color">
-          <div class="badge-colors my-2 text-start">
-            <span class="badge filter bg-gradient-primary active" data-color="primary"
-              onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-          </div>
-        </a>
-        <!-- Sidenav Type -->
-        <div class="mt-3">
-          <h6 class="mb-0">Sidenav Type</h6>
-          <p class="text-sm">Choose between 2 different sidenav types.</p>
-        </div>
-        <div class="d-flex">
-          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent"
-            onclick="sidebarType(this)">Transparent</button>
-          <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white"
-            onclick="sidebarType(this)">White</button>
-        </div>
-        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-        <!-- Navbar Fixed -->
-        <div class="mt-3">
-          <h6 class="mb-0">Navbar Fixed</h6>
-        </div>
-        <div class="form-check form-switch ps-0">
-          <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
-        </div>
-        <hr class="horizontal dark my-sm-4">
-        <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/soft-ui-dashboard-pro">Free
-          Download</a>
-        <a class="btn btn-outline-dark w-100"
-          href="https://www.creative-tim.com/learning-lab/bootstrap/license/soft-ui-dashboard">View documentation</a>
-        <div class="w-100 text-center">
-          <a class="github-button" href="https://github.com/creativetimofficial/soft-ui-dashboard"
-            data-icon="octicon-star" data-size="large" data-show-count="true"
-            aria-label="Star creativetimofficial/soft-ui-dashboard on GitHub">Star</a>
-          <h6 class="mt-3">Thank you for sharing!</h6>
-          <a href="https://twitter.com/intent/tweet?text=Check%20Soft%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard"
-            class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard"
-            class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+ 
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <script src="../js/angular/danhsachve.js"></script>
   
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-  <script src="../assets/js/quanLyVe.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </body>
 

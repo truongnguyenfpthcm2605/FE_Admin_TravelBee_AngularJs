@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" >
 
 <head>
     <meta charset="utf-8" />
@@ -34,13 +34,26 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <link href="../assets/css/quanLyTour.css" rel="stylesheet" />
-    <script src="../assets/js/quanLyTour.js"></script>
+
     <!-- CSS Files -->
     <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+    <!-- js file -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="../assets/js/themtourdulich.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"
+        integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-cookies/1.8.3/angular-cookies.min.js"
+        integrity="sha512-eM4WApD53FS2pv6fIgY4E2utWB82WSp3QPeoemIzA9VeOv9vQ1UzYBKIkXAwS71SCilEFpfkwtCZHj2uSS3keQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-storage-compat.js"></script>
+
 
 
 
@@ -421,23 +434,14 @@
         <!--table quan ly ve-->
         <div class="container-fluid py-4 mt-5">
             <div class="mt-7">
-                <h4>Thêm tour du lịch</h4>
-            <form class="cf" action="#!themDiemDen" >
+                <h4>{{headerText}}</h4>
+            <form class="cf" ng-submit="submitForm()" >
                 <div class="half">
-                    <select id="input-option" class="diemDi" >
-                        <option value="">Lựa chọn địa điểm đi</option>
-                    </select>
-                    <select id="input-option" class="diemDen" >
-                        <option value="">Lựa chọn địa điểm đến</option>
-                    </select>
-            
-                    <label for="input-date" style="display:flex; color: gray" class="mt-3 mb-0">Chọn ngày đi</label>
-                    <input type="date" id="input-date" class="ngayDi" >
-                    <label for="input-date" style="display:flex; color: gray" class="mt-3 mb-0">Chọn ngày về</label>
-                    <input type="date" id="input-date" class="ngayVe" >
-                    <input type="number" id="input-price"  placeholder="Nhập giá VND" min="0">
-                <input type="submit" value="+" id="input-submit" >
-                <input type="submit" value="Lưu Thông Tin" id="luuTourDuLich" hidden style="background-color: gray">
+                    <input type="text" ng-model="title" placeholder="Nhập tên chuyến đi" required>
+                    <input type="text" ng-model="description" placeholder="Nhập mô tả" required>
+                    <input type="number" id="input-price" ng-model="price"  placeholder="Nhập giá VND" min="0">
+                    <input type="file" id="fileInputfb" multiple >
+                <input type="submit" value="Lưu Thông Tin"    >
                 </div>
             </form>
             </div>
@@ -452,6 +456,7 @@
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
@@ -467,7 +472,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="../assets/js/quanLyTour.js"></script>
+    <script src="../js/angular/themtourdulich.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </body>
 

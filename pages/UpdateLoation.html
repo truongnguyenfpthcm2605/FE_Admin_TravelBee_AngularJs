@@ -437,20 +437,18 @@
             </div>
         </nav>
 
-        <div class="container-fluid py-4 mt-1" style=" overflow-x: hidden;">
+        <div class="container-fluid py-4 mt-1" style=" overflow-x: hidden;" ng-app="app" ng-controller="UpdateLoation">
             <div class="mt-5">
-                <h4 >{{headerText}}</h4>
-                <form class="cf" ng-submit="submitForm()">
+                <h4 >Cập nhật địa điểm</h4>
+                <form class="cf" >
                     <div class="half left cf">
-                        <input type="text" ng-model="title" placeholder="Tiêu đề" required>
-                        <input type="text" ng-model="address" placeholder="Địa chỉ" required>
-                        <textarea ng-model="description" placeholder="Mô tả"></textarea>
-                        <input type="number" ng-model="latitude" placeholder="Vĩ độ" required step="any" min="-90" max="90">
-                        <input type="number" ng-model="longitude" placeholder="Kinh độ" required step="any" min="-180" max="180">
-                        <input type="email" ng-model="email" placeholder="Email"  >
-                        <input type="file" id="fileInputfb" multiple >
-                        <button type="submit" class="buttonform" >Lưu</button>
-                        
+                        <input type="text" ng-model="formData.title" placeholder="Tiêu đề" required>
+                        <input type="text" ng-model="formData.address" placeholder="Địa chỉ" required>
+                        <textarea ng-model="formData.description" placeholder="Mô tả"></textarea>
+                        <input type="number" ng-model="formData.latitude" placeholder="Vĩ độ" >
+                        <input type="number" ng-model="formData.longitude" placeholder="Kinh độ" >
+                        <input type="email" ng-model="formData.email" placeholder="Email" disabled > 
+                        <button type="submit" class="buttonform"ng-click="updateLocation()">Lưu</button>
                     </div>
 
                 </form>
@@ -464,7 +462,7 @@
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <!-- <script src="../assets/js/plugins/chartjs.min.js"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
@@ -474,7 +472,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="../js/angular/formthemdiadiem.js"></script>
+    <script src="../js/angular/UploadLocation.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </body>
 

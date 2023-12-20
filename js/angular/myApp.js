@@ -54,7 +54,8 @@ app.config(function ($routeProvider) {
     })
 
     .when('/danhsachve', {
-      templateUrl: './pages/DanhSachVe.html'
+      templateUrl: './pages/DanhSachVe.html',
+      controller:'danhsachve'
     })
 
     .when('/ThayDoiThongTinVe', {
@@ -62,24 +63,34 @@ app.config(function ($routeProvider) {
     })
 
     .when('/themDiaDiem', {
-      templateUrl: './pages/formThemDiaDiem.html'
+      templateUrl: './pages/formThemDiaDiem.html',
+      controller: 'test123'
     })
-    .when('/ThayDoiThongtour', {
-      templateUrl: './pages/thayDoiThongTinTour.html'
+    .when('/UpdateLoation', {
+      templateUrl: './pages/UpdateLoation.html',
+      controller: 'UpdateLoation'
+    })
+    .when('/ThayDoiThongTintour', {
+      templateUrl: './pages/thayDoiThongTinTour.html',
+      controller: 'thayDoiThongTinTour'
     })
     .when('/themtourdulich', {
-      templateUrl: './pages/themTourDuLich.html'
+      templateUrl: './pages/themTourDuLich.html',
+      controller: 'themTourDuLich'
     })
 
     .when('/QuanLyTour', {
-      templateUrl: './pages/QuanLyTour.html'
+      templateUrl: './pages/QuanLyTour.html',
+      controller: 'QuanLyTour'
     })
     .when('/quanLyDiaDiem', {
-      templateUrl: './pages/quanLyDiaDiem.html'
+      templateUrl: './pages/quanLyDiaDiem.html',
+      
     })
 
     .when('/ticket', {
-      templateUrl: './pages/QLVe.html'
+      templateUrl: './pages/QLVe.html',
+      controller: 'quanLyVe'
     })
 
     .otherwise({

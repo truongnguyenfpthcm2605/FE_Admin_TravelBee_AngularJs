@@ -14,7 +14,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 -->
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" >
 
 <head>
     <meta charset="utf-8" />
@@ -39,8 +39,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-
-
+    <script src="/js/angular/formthemdiadiem.js"></script>
 
 </head>
 
@@ -66,7 +65,7 @@
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <title>shop </title>
+                            <title>shop</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
                                     <g transform="translate(1716.000000, 291.000000)">
@@ -276,12 +275,12 @@
                 </a>
             </li>
             <li class="nav-item mt-3">
-                <a ng-click="logout()"  class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: red;"><i class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
+                <a href="ok" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: red;"><i class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
             </li>
   
         </ul>
     </div>
-  </aside>
+    </aside>
     <!--end aside-->
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
@@ -413,12 +412,11 @@
             </div>
         </nav>
 
-        <div class="container-fluid py-4 mt-5">
+        <div class="container-fluid py-4 mt-5" ng-controller="quanlydiadiemController">
             <div class="row">
                 <div class="col-12">
                     <div class="card mb-4">
                         <div class="card-header pb-0">
-                            
                         </div>
                         <div class="card-body px-0 pt-0 pb-2">
                             <div class="table-responsive p-0">
@@ -444,56 +442,49 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
+                                        <tr ng-repeat="item in ls">
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="../assets/img/Halong_ensemble_(colour_corrected).jpg" class="avatar avatar-sm me-3"
+                                                        <img src="{{item.images.split(',')[2]}}" class="avatar avatar-sm me-3"
                                                             alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">Vịnh Hạ Long</h6>
+                                                        <h6 class="mb-0 text-sm">{{item.title}}</h6>
                                                         <a class="text-xs text-secondary mb-0 "
-                                                            href=""><i class="fa-solid fa-location-dot"></i> Vị trí</a>
-                                                        <a class="text-xs text-secondary mb-0 tel"
-                                                            href="">Đánh Giá:
-                                                            <span style="color: rgb(255, 149, 0)"> <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><span></a>
-                                                       
+                                                            href="https://www.google.com/maps?q={{item.latitude}},{{item.longitude}}"><i class="fa-solid fa-location-dot"></i> Vị trí</a>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-secondary text-x  mb-0" style="white-space: pre-line; font-size:11px;">
-                                                    Vịnh Hạ Long là một di sản thiên nhiên thế giới nổi tiếng ở Việt Nam với hàng nghìn đảo đá vôi, hẻm vịnh tuyệt đẹp.
-                                                    Đây là địa điểm du lịch nổi tiếng thu hút hàng triệu lượt khách du lịch mỗi năm bởi vẻ đẹp hoang sơ và kỳ bí của
-                                                    thiên nhiên...
+                                                <p class="text-secondary text-x  mb-0" style="white-space: pre-line; font-size:11px; /* Đảm bảo văn bản nằm trên một dòng */
+                                                overflow: hidden; /* Ẩn văn bản vượt quá giới hạn */
+                                                ">
+                                                    {{item.description}}
                                                 </p>
                                             </td>
                                             <td>
                                                 <p class="text-secondary text-x font-weight-bold mb-0"></p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-        
-                                                <select class="badge badge-sm bg-gradient-success "onchange=" return confirm('Bạn có chắc chắn muốn thay đổi trạng thái địa điểm này không?')">
-                                                    <option class="bg-secondary">Đang hoạt động</option>
-                                                    <option class="bg-secondary">Đã ẩn</option>
-                                                </select>
+                                                <span ng-if="item.isactive" class="badge badge-success">Đã kích hoạt</span>
+                                                <span ng-if="!item.isactive" class="badge badge-danger">Đã khóa</span>                                     
                                             </td>
+                                        
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                <span>{{ item.createdate | date:'dd/MM/yyyy' }}</span>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="#!themDiaDiem" class="text-secondary font-weight-bold text-xs"
-                                                    data-toggle="tooltip" data-original-title="Edit user">
+                                                <a href="" class="text-secondary font-weight-bold text-xs"
+                                                    data-toggle="tooltip" data-original-title="Edit user" ng-click="Edit(item.id)">
                                                     Edit
                                                 </a>
                                             </td>
                                             <td class="align-middle">
-                                                <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip"
-                                                    data-original-title="Edit user">
+                                                <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" ng-click="deleteLocation(item.id)">
                                                     <i class="fa-solid fa-trash-can text-sm"></i>
                                                 </a>
-                                            </td>
+                                            </td>                                            
                                             <td class="align-middle text-center text-sm">
                                                 <button STYLE="border-radius: 5px;display: block"> <i
                                                         class="fa-solid fa-print"></i></button>
@@ -503,7 +494,7 @@
                                        
                                         <tr>
                                             <div class="frame">
-                                                <a href="#!themDiaDiem" class="custom-btn btn-1" style="width: 150px;">Thêm Địa điểm</a>
+                                                <a href="#!themDiaDiem" class="custom-btn btn-1 m-3" style="width: 150px;">Thêm Địa điểm</a>
                                             </div>
                                         
                                         </tr>
@@ -522,8 +513,15 @@
     <script src="../assets/js/core/bootstrap.min.js"></script>
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/chartjs.min.js"></script>
-
+    
+    <!-- <script src="../assets/js/plugins/chartjs.min.js"></script> -->
+    <script>
+        let app = angular.module("app", ['ngRoute'])
+        app.controller("homeController", function ($scope) {
+          $scope.name = 'thien'
+        })
+    
+      </script>
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -538,7 +536,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-    <script src="../assets/js/quanLyDiaDiem.js"></script>
+    <script src="../js/angular/quanLyDiaDiem.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </body>
 
