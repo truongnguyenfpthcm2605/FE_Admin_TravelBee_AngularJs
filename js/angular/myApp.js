@@ -35,23 +35,40 @@ app.config(function ($routeProvider) {
       controller: "loginController",
     })
     .when('/hotel', {
-      templateUrl: './pages/QLKhachSan.html'
-    })
-    .when('/account', {
-      templateUrl: './pages/QLTaiKhoan.html'
-    })
-    .when('/transport', {
-      templateUrl: './pages/QLPhuongTien.html'
-    })
-    .when('/crudTransport', {
-      templateUrl: './pages/CRUDQuanLyPhuongTien.html'
+      templateUrl: './pages/QLKhachSan.html',
+      controller:"KhachSanController",
     })
     .when('/crudHotel', {
-      templateUrl: './pages/ThemKhachSan.html'
+      templateUrl: './pages/ThemKhachSan.html',
+      controller:"CRUDKhachSanController",
+    })
+    .when('/crudHotel/:id', {
+      templateUrl: './pages/CRUDQuanLyKhachSan.html',
+      controller:"CRUDKhachSanController",
+    })
+    .when('/account', {
+      templateUrl: './pages/QLTaiKhoan.html',
+      controller:'TaiKhoanController'
     })
     .when('/CRUDaccount', {
-      templateUrl: './pages/CRUDQuanLyTaiKhoan.html'
+      templateUrl: './pages/ThemTaiKhoan.html',
+      controller:'TaiKhoanController'
+
     })
+    .when('/transport', {
+      templateUrl: './pages/QLPhuongTien.html',
+      controller:'PhuongTienController'
+    })
+    .when('/crudTransport/:id', {
+      templateUrl: './pages/ThemPhuongTien.html',
+      controller:'CRUDTRansportController'
+    })
+    .when('/crudTransport', {
+      templateUrl: './pages/ThemPhuongTien.html',
+      controller:'CRUDTRansportController'
+    })
+    
+    
 
     .when('/danhsachve', {
       templateUrl: './pages/DanhSachVe.html',

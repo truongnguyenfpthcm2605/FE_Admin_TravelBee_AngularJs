@@ -73,18 +73,6 @@ app.controller("voucherController", function ($scope, $location, $http, $rootSco
     
 
 
-    $scope.removeElementById = function (id) {
-        $rootScope.voucherParam = $rootScope.voucherParam.filter(function (item) {
-            return item.id !== id;
-        });
-    };
-
-    $scope.exportExcel = function(){
-        let table2excel = new Table2Excel();
-        table2excel.export(document.querySelector("#table-voucher"),'Danh Sách Voucher');
-    }
-
-
 
 
 
