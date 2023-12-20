@@ -25,29 +25,29 @@ app.controller("quanLyVe", function ($scope, $location, $http, $rootScope, $cook
             });
     }
 
-    // $scope.fetchticket = function () {
-    //     console.log("đây là token " + $rootScope.token)
-    //     $http.get($rootScope.url + "/api/v1/orders/all", {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0cnVvbmdudnBzMjQwODNAZnB0LmVkdS52biIsImlhdCI6MTcwMzA2NjgyNiwiZXhwIjoxNzAzMTUwODI2fQ.wka6D8JaqQ43WS_w9HtmJz8CcGye68BogjJolO0DaDI'
-    //         }
+    $scope.fetchticket = function () {
+        console.log("đây là token " + $rootScope.token)
+        $http.get($rootScope.url + "/api/v1/orders/all", {
+            headers: {
+                'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0cnVvbmdudnBzMjQwODNAZnB0LmVkdS52biIsImlhdCI6MTcwMzA2NjgyNiwiZXhwIjoxNzAzMTUwODI2fQ.wka6D8JaqQ43WS_w9HtmJz8CcGye68BogjJolO0DaDI'
+            }
 
-    //     })
-    //         .then(response => {
-    //             console.log("đây là data chưa nạp", response.data);
-    //             const tickets = response.data;
-    //             console.log("bdqjqwjeq::  ", tickets);
-    //             const plantour1Tickets = tickets.filter(ticket => {
-    //                 return ticket.plantour.id === 1; // Change this line
-    //             });
-    //             $scope.tickets = plantour1Tickets;
-    //             console.log("API Data Ticketfdhd:",  $scope.tickets);
-    //             console.log("token Data:", $rootScope.token);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching locations:', error);
-    //         });
-    // }
+        })
+            .then(response => {
+                console.log("đây là data chưa nạp", response.data);
+                const tickets = response.data;
+                console.log("bdqjqwjeq::  ", tickets);
+                const plantour1Tickets = tickets.filter(ticket => {
+                    return ticket.plantour.id === 1; // Change this line
+                });
+                $scope.tickets = plantour1Tickets;
+                console.log("API Data Ticketfdhd:",  $scope.tickets);
+                console.log("token Data:", $rootScope.token);
+            })
+            .catch(error => {
+                console.error('Error fetching locations:', error);
+            });
+    }
 
 
 

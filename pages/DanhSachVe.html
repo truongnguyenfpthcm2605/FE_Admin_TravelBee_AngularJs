@@ -422,7 +422,7 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Người Đặt Vé</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">QR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Người Đặt Vé</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Số Lượng Người
                       </th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Đơn giá</th>
@@ -437,7 +437,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{{item.qrcode.split(',')[0]}}" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="{{item.qrcode}}" class="avatar avatar-sm me-3" alt="user1" width="100%" height="100%">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <a class="text-xs text-secondary mb-0 mail" href="mailto:{{item.email}}"><span>email:
@@ -452,7 +452,7 @@
                         <p class="text-secondary text-x font-weight-bold mb-0">{{item.member}}</p>
                       </td>
                       <td>
-                        <p class="text-secondary text-x font-weight-bold mb-0">{{item.price}}</p>
+                        <p class="text-secondary text-x font-weight-bold mb-0">{{item.price | currency:'':0}} VNĐ</p>
                       </td>
                       <td class="align-middle text-center text-sm">
                     
@@ -462,16 +462,10 @@
                         </select>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{item.createdate}}</span>
+                        <span class="text-secondary text-xs font-weight-bold">{{item.createdate | date:'dd/MM/yyyy'}}</span>
                       </td>
                       <td class="align-middle">
-                        <a href="#!/ThayDoiThongTinVe" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                      <td class="align-middle">
-                        <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user"ng-click="deleteTiket(item.id)">
                           <i class="fa-solid fa-trash-can text-sm"></i>
                         </a>
                       </td>

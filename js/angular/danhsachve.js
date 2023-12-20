@@ -1,6 +1,7 @@
 console.log("đây là danh sách vé");
 angular.module('app').controller('danhsachve', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
     $scope.Ticket = [];
+    
     var idTicket = $location.search().id;
     console.log("id Ticketsegsgg", idTicket);
     // Fetch locations
@@ -19,7 +20,7 @@ angular.module('app').controller('danhsachve', ['$scope', '$http', '$location', 
                 const plantour1Tickets = tickets.filter(ticket => {
                     return ticket.plantour.id === parseInt(idTicket); // Change this line
                 });
-                $scope.tickets = plantour1Tickets;
+                $scope.Ticket = plantour1Tickets;
                 console.log("API Data Ticketfdhd:",  $scope.tickets);
                 console.log("token Data:", $rootScope.token);
             })
@@ -27,16 +28,16 @@ angular.module('app').controller('danhsachve', ['$scope', '$http', '$location', 
                 console.error('Error fetching locations:', error);
             });
     }
-
+   
 
 
     // Call fetchLocations when the controller is loaded
 
     $scope.fetchticket();
-
+    console.log("đây là danh sách vé APIs", $scope.Ticket);
 
     // Delete location function
-    $scope.deleteLocation = function (locationId) {
+    $scope.deleteTiket = function (locationId) {
         Swal.fire({
             title: 'Are you sure?',
             text: 'Do you really want to delete this location?',
@@ -48,7 +49,7 @@ angular.module('app').controller('danhsachve', ['$scope', '$http', '$location', 
         }).then((result) => {
             if (result.value) {
                 console.log('Attempting to delete location with ID:', locationId);
-                $http.delete($rootScope.url + '/api/v1/location/delete/' + locationId, {
+                $http.delete($rootScope.url + 'api/v1/orders/delete/' + locationId, {
                     headers: {
                         'Authorization': 'Bearer ' + $rootScope.token
                     }
