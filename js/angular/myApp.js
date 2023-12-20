@@ -54,7 +54,8 @@ app.config(function ($routeProvider) {
     })
 
     .when('/danhsachve', {
-      templateUrl: './pages/DanhSachVe.html'
+      templateUrl: './pages/DanhSachVe.html',
+      controller:'danhsachve'
     })
 
     .when('/ThayDoiThongTinVe', {
@@ -88,7 +89,8 @@ app.config(function ($routeProvider) {
     })
 
     .when('/ticket', {
-      templateUrl: './pages/QLVe.html'
+      templateUrl: './pages/QLVe.html',
+      controller: 'quanLyVe'
     })
 
     .otherwise({
