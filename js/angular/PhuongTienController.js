@@ -6,21 +6,19 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
                 'Authorization': 'Bearer ' + $rootScope.token
             }
         }).then(function (response) {
-            $rootScope.transport = response.data
-            $scope.current = $rootScope.transport
-            console.log($rootScope.transport)
+            $rootScope.transportParam = response.data
+            $scope.current = $rootScope.transportParam
         })
             .catch(function (error) {
 
             });
-
     }
     $scope.findAll()
 
 
     $scope.deleteid = function (id) {
         Swal.fire({
-            title: "Bạn có muốn xóa phương tiện này ?",
+            title: "Bạn có muốn xóa khách này ?",
             text: "sẽ không thể phục hồi lại được!",
             icon: "warning",
             showCancelButton: true,
@@ -29,14 +27,14 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                $http.delete($rootScope.url + "/api/v1/transport/" + id, {
+                $http.delete($rootScope.url + "/api/v1/transport/delete/" + id, {
                     headers: {
                         'Authorization': 'Bearer ' + $rootScope.token
                     }
                 }).then(function (response) {
                     Swal.fire({
                         title: "Deleted!",
-                        text: "Phương tiện đã được delete thành công.",
+                        text: "Khách sạn đã được delete thành công.",
                         icon: "success"
                     });
                     $scope.removeElementById(id)
@@ -46,7 +44,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
                         console.log(error)
                         Swal.fire({
                             icon: 'error',
-                            title: 'xóa phương tiện thất bại',
+                            title: 'xóa khách sạn thất bại',
                             text: 'kiểm tra lai dữ liệu',
                         });
                     });
@@ -62,9 +60,9 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
                 transport.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
         });
     };
-    $scope.exportExcel = function () {
+    $scope.exportExcel = function(){
         let table2excel = new Table2Excel();
-        table2excel.export(document.querySelector("#table-pt"), 'Danh Sách phương tiện');
+        table2excel.export(document.querySelector("#table-transport"),'Danh Sách transport');
     }
     $scope.removeElementById = function (id) {
         $rootScope.transportParam = $rootScope.transportParam.filter(function (item) {
@@ -72,7 +70,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
         });
     };
 
-
+    
 
 
 

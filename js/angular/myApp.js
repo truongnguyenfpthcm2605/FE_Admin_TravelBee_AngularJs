@@ -47,7 +47,8 @@ app.config(function ($routeProvider) {
       controller:"CRUDKhachSanController",
     })
     .when('/account', {
-      templateUrl: './pages/QLTaiKhoan.html'
+      templateUrl: './pages/QLTaiKhoan.html',
+      controller:'TaiKhoanController'
     })
     .when('/transport', {
       templateUrl: './pages/QLPhuongTien.html',

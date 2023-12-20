@@ -409,7 +409,7 @@
             </div>
             <div class="card-body px-0 pt-0 pb-2" style="overflow-x: hidden">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0" id="table-pt">
+                <table class="table align-items-center mb-0" id="table-transport">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
@@ -454,7 +454,7 @@
                           Edit
                         </a>
                         <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip"
-                          data-original-title="Edit user">
+                          data-original-title="Edit user" ng-click="deleteid(item.id)">
                           | Delete
                         </a>
                       </td>
@@ -725,63 +725,6 @@
       },
     });
   </script>
-  <!-- <script>
-  // Import thư viện ExcelJS
-import * as ExcelJS from 'exceljs';
-
-// Hàm xử lý khi click nút Lưu
-function saveData() {
-
-  // Lấy dữ liệu từ các dòng trong bảng 
-  const rows = document.querySelectorAll('tbody tr');
-
-  const data = [];
-
-  rows.forEach(row => {
-
-    const title = row.querySelector('td:nth-child(1) h6').innerText;
-    const phone = row.querySelector('td:nth-child(2) p').innerText;  
-    const address = row.querySelector('td:nth-child(3) p').innerText;
-    const description = row.querySelector('td:nth-child(4) span').innerText;
-    const status = row.querySelector('td:nth-child(5) span').innerText;
-
-    data.push({
-      title, 
-      phone,
-      address,
-      description,
-      status
-    });
-
-  });
- 
-  // Tạo Workbook và Worksheet
-  let workbook = new ExcelJS.Workbook();
-  let worksheet = workbook.addWorksheet('Phuong tiens');
-
-  // Định dạng cho các cột 
-  worksheet.columns = [
-    { header: 'Tiêu đề', key: 'title' },
-    { header: 'Số điện thoại', key: 'phone' },
-    { header: 'Địa chỉ', key: 'address' }, 
-    { header: 'Miêu tả', key: 'description' },
-    { header: 'Trạng thái', key: 'status' }
-  ];
-
-  // Thêm dữ liệu vào worksheet
-  worksheet.addRows(data);
-
-  // Xuất file Excel
-  workbook.xlsx.writeBuffer().then(data => {
-    let blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    saveAs(blob, 'phuongtiens.xlsx');
-  });
-
-}
-
-// Gán sự kiện click cho nút Lưu
-document.getElementById('btnSave').addEventListener('click', saveData);
-  </script> -->
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

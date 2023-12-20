@@ -3,13 +3,13 @@
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
       aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
+    <!-- <a class="navbar-brand m-0" href="https://demos.creative-tim.com/soft-ui-dashboard/pages/dashboard.html"
       target="_blank">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/travel-bee-e0b59.appspot.com/o/logo.png?alt=media&token=9b7bf685-a7ff-49d9-9413-abdeee4cb722"
         class="navbar-brand-img h-100" alt="main_logo">
       <span class="ms-1 font-weight-bold">Travel Bee</span>
-    </a>
+    </a> -->
   </div>
   <hr class="horizontal dark mt-0">
   <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
@@ -361,7 +361,6 @@
       </div>
     </div>
   </nav>
-
   <div class="container-fluid py-4" ng-controller="KhachSanController">
     <div class="row">
       <div class="col-12" style="overflow-x: hidden;">
@@ -426,7 +425,7 @@
                       <span style="display: none;">{{item.image}}</span>
                       <div class="d-flex px-2 py-1">
                         <div>
-                          <img src="{{item.image}}" class="avatar avatar-sm me-3" alt="" width="300px">
+                          <img src="{{item.images.split(',')[0]}}" class="avatar avatar-sm me-3" alt="" width="300px">
                         </div>
                       </div>
                     </td>
@@ -476,10 +475,6 @@
     </div>
   </div>
 </main>
-
-
-
-id="sidenav-main">
 <div class="sidenav-header">
   <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
     aria-hidden="true" id="iconSidenav"></i>
@@ -746,7 +741,7 @@ id="sidenav-main">
                 <button ng-click="exportExcel()" class="btn " style="background-color:#9ADE7B; color: white;"><i
                     style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
                 <a class="btn " href="#!crudHotel" style="background-color:#748E63; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create Voucher</a>
+                    style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create Hotel</a>
               </div>
             </div>
           </div>
@@ -1031,4 +1026,4 @@ id="sidenav-main">
     </div>
 
   </div>
-</main> -->
+</main>
