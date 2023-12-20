@@ -18,6 +18,7 @@ app.controller("KhachSanController", function ($scope, $location, $http, $rootSc
     $scope.findAll()
 
     $scope.save = function () {
+        alert("hello")
         Swal.fire({
             title: "Bạn có muốn lưu khách sạn này ?",
             icon: "warning",
@@ -25,7 +26,8 @@ app.controller("KhachSanController", function ($scope, $location, $http, $rootSc
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, save it!"
-        }).then((result) => {
+        })
+        .then((result) => {
             if (result.isConfirmed) {
                 $http.delete($rootScope.url + "/api/v1/hotel/save", {
                     headers: {
