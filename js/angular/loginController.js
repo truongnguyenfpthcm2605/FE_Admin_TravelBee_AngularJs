@@ -24,14 +24,8 @@ app.controller("loginController", function ($scope, $location, $http, $rootScope
                                 width: 600,
                                 icon: 'success',
                                 padding: '3em',
-                                color: '#716add',
-                                background: '#fff url(/images/trees.png)',
-                                backdrop: `
-                                          rgba(0,0,123,0.4)
-                                          url("https://i.pinimg.com/originals/4e/bf/f3/4ebff34bb96f7d7b0c157d64bd116085.gif")
-                                          left top
-                                          no-repeat
-                                        `,
+                                color: '#716add'
+                                
                             });
                             $location.path('/main');
                         } else {

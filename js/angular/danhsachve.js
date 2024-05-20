@@ -89,6 +89,10 @@ angular.module('app').controller('danhsachve', ['$scope', '$http', '$location', 
         $location.search({ id: id });
     }
 
+    $scope.hello = function(){
+        alert("helllo")
+    }
+
 }
 
 

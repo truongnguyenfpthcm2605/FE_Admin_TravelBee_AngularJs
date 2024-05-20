@@ -13,10 +13,6 @@ angular.module('app').controller('QuanLyTour', ['$scope', '$http', '$location', 
             console.log(response.data);
             const activeLocations = response.data.filter(l => l.isactive);
              $scope.ls = activeLocations; 
-            // $rootScope.locations = response.data;
-            // $scope.ls = $rootScope.locations;
-             console.log("API Data:", activeLocations);
-             console.log("token Data:", $rootScope.token);
         })
         .catch(error => {
             console.error('Error fetching locations:', error);
@@ -28,7 +24,6 @@ angular.module('app').controller('QuanLyTour', ['$scope', '$http', '$location', 
 
     // Delete location funct
     $scope.deleteLocation = function(TourId) {
-        console.log("Delete locatio",TourId);
         Swal.fire({
             title: 'Are you sure?',
             text: 'Do you really want to delete this location?',
@@ -46,7 +41,6 @@ angular.module('app').controller('QuanLyTour', ['$scope', '$http', '$location', 
                     }
                 })
                 .then(function(response) {
-                    console.log('Location deleted successfully');
                     Swal.fire({
                         icon: 'success',
                         title: 'Deleted!',

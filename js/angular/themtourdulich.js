@@ -2,8 +2,13 @@
 angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
     // Your controller's code...
     // Controller logic
+
     $scope.s = ''
-    $scope.headerText = "Thêm tour du lịch"; 
+    $scope.headerText = "Thêm tour du lịch";
+
+
+
+    let saveTour = document.getElementById('savetour').disabled = true
     let uploadPromises = [];
     var firebaseConfig = {
         apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
@@ -18,16 +23,21 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
     $scope.image = ''
     document.getElementById('fileInputfb').onchange = function (e) {
         let files = e.target.files;
+        Swal.fire({
+            title: 'Please await!',
+            text: 'Vui lòng đợi 5s để upload ảnh!',
+            icon: 'warning',
+            timer: 5000,
+        });
         $scope.uploadfirebase(files)
-
-
-
+        let saveTour = document.getElementById('savetour').disabled = false
 
     }
 
 
 
     $scope.uploadfirebase = function (files) {
+
         const ref = firebase.storage().ref();
 
         if (files.length === 0) {
@@ -81,49 +91,124 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
     // Function to submit form
     $scope.submitForm = function () {
         var imagesString = list.join(",");
-        // Assuming you have model bindings for these fields in your form
         var locationData = {
             title: $scope.title,
             description: $scope.description,
             price: $scope.price,
-            images: imagesString, // Array of image URLs from Firebase
-            email: $scope.email // Assuming you have the user's email
+            location: $scope.location,
+            images: imagesString,
+            email: $rootScope.email
         };
-
-        // Log data to console in JSON format
-        console.log('Submitting the following data:', JSON.stringify(locationData, null, 2));
-
-
-        $http.post('http://localhost:8080/api/v1/tour/save', locationData, {
+        $http.post($rootScope.url + "/api/v1/tour/save", locationData, {
             headers: {
                 'Authorization': 'Bearer ' + $rootScope.token
             }
         })
             .then(function (response) {
+                localStorage.setItem('tourID',response.data.id)
                 console.log('Data submitted successfully:', response.data);
                 Swal.fire({
-                    title: 'Cập nhật thành công!',
-                    text: 'Bạn sẽ được đưa về trang chính sau 3s.',
-                    icon: 'success',
-                    timer: 3000,
-                    willClose: () => {
-                        $location.path('/QuanLyTour');
-                        $scope.$apply(); // Needed to trigger a digest cycle
-                    }
+                    title: 'Thành công!',
+                    text: 'Thêm tour thành công',
+                    icon: 'success'
                 });
-                // Add any success notification or actions here
+                document.getElementById("detail").style.display = "block";
+
             })
             .catch(function (error) {
-                console.error('Error submitting data:', error);
-                // Add error handling logic here, possibly similar to quanlydiadiemController
+                console.log(error)
+            });
+
+    }
+
+
+    $scope.hotels = []
+    $scope.transports = []
+    $scope.locations = []
+
+    $http.get($rootScope.url + "/api/v1/hotel/all")
+        .then(function (response) {
+            $scope.hotels = response.data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    $http.get($rootScope.url + "/api/v1/transport/all")
+        .then(function (response) {
+            $scope.transports = response.data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    $http.get($rootScope.url + "/api/v1/location/all")
+        .then(function (response) {
+            $scope.locations = response.data;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    $scope.tourdetail = {
+        hotel: "",
+        location: "",
+        tour: Number(localStorage.getItem('tourID')),
+        transport: "",
+        description: ""
+    }
+
+   
+
+    $scope.saveTourDetail = () => {
+        console.log(localStorage.getItem('tourID'))
+        $http.post($rootScope.url + "/api/v1/staff/tour-detail/save", $scope.tourdetail, {
+            headers: {
+                'Authorization': 'Bearer ' + $rootScope.token
+            }
+        })
+            .then(function (response) {
                 Swal.fire({
-                    title: 'Submission Error!',
-                    text: 'There was a problem saving the location: ' + error,
-                    icon: 'error',
-                    confirmButtonText: 'OK'
+                    title: 'Thành công!',
+                    text: 'Thêm Tour Detail thành công',
+                    icon: 'success'
                 });
+                document.getElementById("plantour").style.display = "block";
+
+            })
+            .catch(function (error) {
+                console.log(error)
             });
     }
-    
+
+
+    $scope.plantour = {
+        startDate: '',
+        endDate: "",
+        email: $rootScope.email,
+        description: '',
+        tourId: Number(localStorage.getItem('tourID'))
+    }
+
+    $scope.savePlantour = () => {
+        $http.post($rootScope.url + "/api/v1/plant-tour/save", $scope.plantour, {
+            headers: {
+                'Authorization': 'Bearer ' + $rootScope.token
+            }
+        })
+            .then(function (response) {
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: 'Thêm Thời gian thành công',
+                    icon: 'success'
+                });
+                $location.url("/QuanLyTour")
+
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+    }
+
 }]);
 
