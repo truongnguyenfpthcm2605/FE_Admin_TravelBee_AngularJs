@@ -46,7 +46,7 @@ angular.module('app').controller('QuanLyTour', ['$scope', '$http', '$location', 
                         title: 'Deleted!',
                         text: 'The location has been successfully deleted.'
                     });
-                    $scope.fetchLocations(); // Refresh the list of locations
+                    $scope.fetchLocations(); 
                 })
                 .catch(function(error) {
                     console.error('Error deleting location:', error);

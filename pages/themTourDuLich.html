@@ -366,28 +366,28 @@
             <h2 style="text-align: center;">Đại điểm - Phương tiên - Khách sạn</h2>
             <div class="form-group">
                 <label for="hotelSelect">Khách sạn</label>
-                <select class="form-control" id="hotelSelect" ng-model="tourdetail.hotel">
+                <select class="form-control" id="hotelSelect" ng-model="tourdetail.hotel" required>
                     <option value="">Chọn khách sạn</option>
                     <option ng-repeat="item in hotels" value="{{item.id}}">{{item.title}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="transportSelect">Phương tiện</label>
-                <select class="form-control" id="transportSelect" ng-model="tourdetail.transport">
+                <select class="form-control" id="transportSelect" ng-model="tourdetail.transport" required>
                     <option value="">Chọn phương tiện</option>
                     <option ng-repeat="item in transports" value="{{item.id}}">{{item.title}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="locationSelect">Địa điểm</label>
-                <select class="form-control" id="locationSelect" ng-model="tourdetail.location">
+                <select class="form-control" id="locationSelect" ng-model="tourdetail.location" required>
                     <option value="">Chọn địa điểm</option>
                     <option ng-repeat="item in locations" value="{{item.id}}">{{item.title}}</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea cols="5" rows="5" class="form-control" placeholder="Nhập mô tả"
+                <textarea cols="5" rows="5" class="form-control" placeholder="Nhập mô tả" required
                     ng-model="tourdetail.description"></textarea>
             </div>
             <button type="button" ng-click="saveTourDetail()" class="btn btn-primary">Thêm</button>
@@ -404,13 +404,13 @@
             </div>
             <div class="form-group">
                 <label >Ngày kết thúc tour</label>
-                <input type="date" required class="form-control"  ng-model="plantour.endDate">
+                <input type="date" required class="form-control"  ng-model="plantour.endDate" >
 
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
                 <textarea cols="5" rows="5" class="form-control" placeholder="Nhập mô tả"
-                    ng-model="plantour.description"></textarea>
+                    ng-model="plantour.description" required></textarea>
             </div>
             <button type="button" ng-click="savePlantour()" class="btn btn-primary">Thêm</button>
         </form>

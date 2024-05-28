@@ -80,8 +80,7 @@ app.config(function ($routeProvider) {
     })
 
     .when('/themDiaDiem', {
-      templateUrl: './pages/formThemDiaDiem.html',
-      controller: 'test123'
+      templateUrl: './pages/formThemDiaDiem.html'
     })
     .when('/UpdateLoation', {
       templateUrl: './pages/UpdateLoation.html',

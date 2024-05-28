@@ -1,12 +1,10 @@
 angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
-  // Your controller's code...
-  // Controller logic
   $scope.formData = {};
   var id = $location.search().id;
   console.log("idupdate: " + id);
 
   $scope.loadLocationData = function () {
-    var apiUrl = 'http://localhost:8080/api/v1/tour/' + id; // URL của API để lấy dữ liệu
+    var apiUrl = 'http://localhost:8080/api/v1/tour/' + id; 
     $http({
       method: 'GET',
       url: apiUrl,
@@ -22,7 +20,6 @@ angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$lo
           $scope.formData.email = response.data.account.email;
           console.log("Email from account:", response.data.account.email);
         }
-        // Bỏ qua trường isActive và images
 
       }, function (error) {
         Swal.fire({
@@ -34,10 +31,6 @@ angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$lo
   };
   $scope.loadLocationData();
   $scope.updateLocation = function () {
-    var dataToSend = angular.copy($scope.formData);
-    // Loại bỏ các trường không muốn gửi đi
-    delete dataToSend.isActive;
-    delete dataToSend.views;
     var apiUrl = 'http://localhost:8080/api/v1/tour/update/' + $scope.formData.id;
 
     $http({

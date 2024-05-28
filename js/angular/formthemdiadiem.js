@@ -1,10 +1,11 @@
-angular.module('app').controller('test123', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
+angular.module('app').controller('Addlocation', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
     // Your controller's code...
     // Controller logic
 
     $scope.s = ''
     $scope.headerText = "Thêm địa điểm"; 
-    let uploadPromises = [];
+    document.getElementById('save').disabled = true
+    $scope.email = $rootScope.email;
     var firebaseConfig = {
         apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
         authDomain: "travel-bee-e0b59.firebaseapp.com",
@@ -20,9 +21,6 @@ angular.module('app').controller('test123', ['$scope', '$http', '$location', '$r
         let files = e.target.files;
         $scope.uploadfirebase(files)
 
-
-
-
     }
 
 
@@ -34,6 +32,14 @@ angular.module('app').controller('test123', ['$scope', '$http', '$location', '$r
             console.log("Vui lòng chọn ít nhất một tệp hình ảnh.");
             return;
         }
+
+        Swal.fire({
+            title: 'Vui lòng đợi upload ảnh!',
+            text: 'Có thể mấy khoản 3s - 5s.',
+            icon: 'warning',
+            timer: 3000
+           
+        });
 
         const uploadPromises = [];
 
@@ -65,6 +71,8 @@ angular.module('app').controller('test123', ['$scope', '$http', '$location', '$r
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
+
+               document.getElementById('save').disabled = false
             })
 
             .catch((error) => {

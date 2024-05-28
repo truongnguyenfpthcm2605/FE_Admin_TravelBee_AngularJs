@@ -33,17 +33,13 @@ angular.module('app').controller('UpdateLoation', ['$scope', '$http', '$location
     };
     $scope.loadLocationData();
     $scope.updateLocation = function() {
-        var dataToSend = angular.copy($scope.formData);
-      // Loại bỏ các trường không muốn gửi đi
-      delete dataToSend.isActive;
         var apiUrl = 'http://localhost:8080/api/v1/location/update/' + $scope.formData.id;
-    
         $http({
           method: 'PUT',
           url: apiUrl,
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0cnVvbmdudnBzMjQwODNAZnB0LmVkdS52biIsImlhdCI6MTcwMjk3OTU5MSwiZXhwIjoxNzAzMDYzNTkxfQ.nwRSmwQGzF_251WaDNF5Ix8XhUxY4PLnPUQyUPlnX6E'
+            'Authorization': 'Bearer ' + $rootScope.token
           },
           data: $scope.formData
         })
@@ -55,17 +51,16 @@ angular.module('app').controller('UpdateLoation', ['$scope', '$http', '$location
             timer: 3000,
             willClose: () => {
                 $location.path('/quanLyDiaDiem');
-                $scope.$apply(); // Needed to trigger a digest cycle
+                $scope.$apply(); 
             }
         });
-          // Handle success response
+  
         }, function(error) {
           Swal.fire({
             title: 'Lỗi!',
             text: 'Đã xảy ra lỗi: ' + error.message,
             icon: 'error'
           });
-          // Handle error response
         });
       };
   
