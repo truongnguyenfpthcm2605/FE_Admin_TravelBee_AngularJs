@@ -12,7 +12,6 @@ app.controller(
           },
         })
         .then((response) => {
-          console.log(response.data);
           activeLocations = response.data.filter((l) => l.isactive);
           $scope.ls = response.data;
         })

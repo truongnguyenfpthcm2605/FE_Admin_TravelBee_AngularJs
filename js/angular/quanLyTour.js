@@ -15,7 +15,6 @@ angular.module("app").controller("QuanLyTour", [
           },
         })
         .then((response) => {
-          console.log(response.data);
           const activeLocations = response.data.filter((l) => l.isactive);
           $scope.ls = activeLocations;
         })
