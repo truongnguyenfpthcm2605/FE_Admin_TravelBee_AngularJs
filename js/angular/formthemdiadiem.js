@@ -67,7 +67,7 @@ angular.module('app').controller('Addlocation', ['$scope', '$http', '$location',
                 console.log(list.join(","))
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Images uploaded successfully.',
+                    text: 'Upload image thành công',
                     icon: 'success',
                     confirmButtonText: 'OK'
                 });
@@ -100,11 +100,8 @@ angular.module('app').controller('Addlocation', ['$scope', '$http', '$location',
             email: $scope.email // Assuming you have the user's email
         };
 
-        // Log data to console in JSON format
-        console.log('Submitting the following data:', JSON.stringify(locationData, null, 2));
 
-
-        $http.post('http://localhost:8080/api/v1/location/save', locationData, {
+        $http.post($rootScope.url+'/api/v1/location/save', locationData, {
             headers: {
                 'Authorization': 'Bearer ' + $rootScope.token
             }

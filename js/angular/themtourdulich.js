@@ -9,7 +9,6 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
 
 
     let saveTour = document.getElementById('savetour').disabled = true
-    let uploadPromises = [];
     var firebaseConfig = {
         apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
         authDomain: "travel-bee-e0b59.firebaseapp.com",

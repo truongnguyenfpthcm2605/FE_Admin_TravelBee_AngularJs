@@ -1,10 +1,9 @@
 angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
   $scope.formData = {};
   var id = $location.search().id;
-  console.log("idupdate: " + id);
 
   $scope.loadLocationData = function () {
-    var apiUrl = 'http://localhost:8080/api/v1/tour/' + id; 
+    var apiUrl = $rootScope.url+'/api/v1/tour/' + id; 
     $http({
       method: 'GET',
       url: apiUrl,
@@ -18,7 +17,6 @@ angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$lo
         delete $scope.formData.views;
         if (response.data.account && response.data.account.email) {
           $scope.formData.email = response.data.account.email;
-          console.log("Email from account:", response.data.account.email);
         }
 
       }, function (error) {
@@ -31,7 +29,7 @@ angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$lo
   };
   $scope.loadLocationData();
   $scope.updateLocation = function () {
-    var apiUrl = 'http://localhost:8080/api/v1/tour/update/' + $scope.formData.id;
+    var apiUrl = $rootScope.url+'/api/v1/tour/update/' + $scope.formData.id;
 
     $http({
       method: 'PUT',
@@ -53,14 +51,13 @@ angular.module('app').controller('thayDoiThongTinTour', ['$scope', '$http', '$lo
             $scope.$apply(); // Needed to trigger a digest cycle
           }
         });
-        // Handle success response
       }, function (error) {
         Swal.fire({
           title: 'Lỗi!',
           text: 'Đã xảy ra lỗi: ' + error.message,
           icon: 'error'
         });
-        // Handle error response
+       
       });
   };
 

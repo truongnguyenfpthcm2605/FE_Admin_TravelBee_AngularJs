@@ -1,10 +1,7 @@
 angular.module('app').controller('UpdateLoation', ['$scope', '$http', '$location', '$rootScope', function ($scope, $http, $location, $rootScope) {
-    // Your controller's code...
-    // Controller logic
+
     $scope.formData = {};
     var id = $location.search().id;
-    console.log("idupdate: " + id);
-
     $scope.loadLocationData = function() {
       var apiUrl = 'http://localhost:8080/api/v1/location/'+id; // URL của API để lấy dữ liệu
       $http({
@@ -19,9 +16,7 @@ angular.module('app').controller('UpdateLoation', ['$scope', '$http', '$location
         delete $scope.formData.isActive;
         if(response.data.account && response.data.account.email) {
           $scope.formData.email = response.data.account.email;
-          console.log("Email from account:", response.data.account.email);
       }
-        // Bỏ qua trường isActive và images
 
       }, function(error) {
         Swal.fire({
