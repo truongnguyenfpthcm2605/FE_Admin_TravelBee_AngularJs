@@ -20,10 +20,9 @@ app.controller(
         });
     };
     $scope.findAll();
-    console.log($scope.findAll());
-    $scope.check = function (id) {
-      alert(id);
-    };
+
+
+
     $scope.content = "";
     $scope.submitForm = function (id, content) {
       $http
@@ -47,17 +46,9 @@ app.controller(
             title: "gửi Thành Công",
             width: 600,
             icon: "success",
-            padding: "3em",
-            color: "#716add",
-            background: "#fff url(/images/trees.png)",
-            backdrop: `
-                            rgba(0,0,123,0.4)
-                            url("https://i.pinimg.com/originals/4e/bf/f3/4ebff34bb96f7d7b0c157d64bd116085.gif")
-                            left top
-                            no-repeat
-                          `,
+            text: "Trả lời phải hồi thành công",
           });
-          $location.path("/QuanLyPhanHoi");
+         
         })
 
         .catch((error) => {
@@ -67,6 +58,31 @@ app.controller(
             text: "Có lỗi xảy ra. Vui lòng thử lại sau.",
           });
         });
+        $scope.findAll();
     };
+
+
+    $scope.delete = function(id){
+      $http
+        .delete($rootScope.url + "/api/v1/feedback/delete/"+id, {
+          headers: {
+            Authorization: "Bearer " + $rootScope.token,
+          },
+        })
+        .then(function (response) {
+          $scope.findAll();
+          Swal.fire({
+            title: "Xóa Thành Công",
+            width: 600,
+            icon: "success",
+            text: "Xóa phải hồi thành công",
+          });
+         
+        })
+        .catch(function (error) {
+          console.error("Error:", error);
+        });
+
+    }
   }
 );

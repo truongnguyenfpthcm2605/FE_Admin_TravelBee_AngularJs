@@ -5,8 +5,8 @@ app.config(function ($routeProvider) {
       controller: "mainController",
     })
     .when("/QuanLyPhanHoi", {
-      templateUrl: "./pages/QuanLyPhanHoi.html",
-      controller: "feedBackController",
+      templateUrl: "./pages/QuanLyPhanHoi.html"
+
     })
     .when("/modalFeedback", {
       templateUrl: "./pages/modalFeedback.html",
@@ -47,8 +47,7 @@ app.config(function ($routeProvider) {
       controller:"CRUDKhachSanController",
     })
     .when('/account', {
-      templateUrl: './pages/QLTaiKhoan.html',
-      controller:'TaiKhoanController'
+      templateUrl: './pages/QLTaiKhoan.html'
     })
     .when('/CRUDaccount', {
       templateUrl: './pages/ThemTaiKhoan.html',

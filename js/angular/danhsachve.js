@@ -48,8 +48,6 @@ angular.module('app').controller('danhsachve', function ($scope, $http, $locatio
         .catch(error => {
             console.error('Error fetching locations:', error);
         });
-
-        $scope.fetchticket();
     }
 
 

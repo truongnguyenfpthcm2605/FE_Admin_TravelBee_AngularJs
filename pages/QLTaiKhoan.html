@@ -2,13 +2,14 @@
   id="sidenav-main">
   <div class="sidenav-header">
     <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
-        aria-hidden="true" id="iconSidenav"></i>
-    <a class="navbar-brand m-0" href="#!main"
-    >
-        <img src="https://firebasestorage.googleapis.com/v0/b/travel-bee-e0b59.appspot.com/o/logo.png?alt=media&token=9b7bf685-a7ff-49d9-9413-abdeee4cb722" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Travel Bee</span>
+      aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand m-0" href="#!main">
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/travel-bee-e0b59.appspot.com/o/logo.png?alt=media&token=9b7bf685-a7ff-49d9-9413-abdeee4cb722"
+        class="navbar-brand-img h-100" alt="main_logo">
+      <span class="ms-1 font-weight-bold">Travel Bee</span>
     </a>
-</div>
+  </div>
   <hr class="horizontal dark mt-0">
   <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
     <ul class="navbar-nav">
@@ -228,8 +229,9 @@
         </a>
       </li>
       <li class="nav-item mt-3">
-        <a ng-click="logout()" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: red;"><i
-            class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
+        <a ng-click="logout()" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
+          style="color: red;"><i class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng
+          Xuất</a>
       </li>
     </ul>
   </div>
@@ -250,16 +252,16 @@
 
         </div>
         <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none">{{fullname}} </span>
-                    <span style="color: #B31312;">{{authorities[0].authority}}</span>
-                </a>
-            </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <span class="d-sm-inline d-none">{{fullname}} </span>
+              <span style="color: #B31312;">{{authorities[0].authority}}</span>
+            </a>
+          </li>
 
         </ul>
-    </div>
+      </div>
     </div>
   </nav>
 
@@ -267,18 +269,13 @@
     <div class="row">
       <div class="col-12" style="overflow-x: hidden;">
         <div class="card mb-4">
-          <div class="card-header pb-0">
+          <div class="card-header pb-2">
             <div class="row">
               <div class="col-lg-8">
                 <input type="text" ng-model="searchInput" ng-change="searchKeyword(searchInput)" class="form-control"
                   placeholder="Tìm kiếm">
               </div>
-              <div class="col-lg-4">
-                <button ng-click="exportExcel()" class="btn " style="background-color:#9ADE7B; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
-                <a class="btn " href="#!CRUDaccount" style="background-color:#748E63; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create Account</a>
-              </div>
+            
             </div>
           </div>
           <div class="card-body px-0 pt-0 pb-2" style="overflow-x: hidden">
@@ -350,8 +347,11 @@
                       <a class="badge badge-warning " ng-href="#!crudAccount/{{item.id}}">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </a>
-                      <a class="badge badge-danger " ng-click="deleteid(item.id)">
+                      <a ng-hide="item.isactive" class="badge badge-danger " ng-click="deleteid(item.id)">
                         <i class="fa-solid fa-trash"></i>
+                      </a>
+                      <a ng-hide="!item.isactive" class="badge badge-success " ng-click="deleteid(item.id)">
+                        <i class="fa-solid fa-window-restore"></i>
                       </a>
                     </td>
                     <td class="align-middle">
@@ -620,12 +620,7 @@
                 <input type="text" ng-model="searchInput" ng-change="searchKeyword(searchInput)" class="form-control"
                   placeholder="Tìm kiếm theo mã, theo tên">
               </div>
-              <div class="col-lg-4">
-                <button ng-click="exportExcel()" class="btn " style="background-color:#9ADE7B; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
-                <a class="btn " href="#!crudAccount" style="background-color:#748E63; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create account</a>
-              </div>
+
             </div>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
@@ -700,10 +695,12 @@
                       <a class="badge badge-warning " ng-href="#!crudHotel/{{item.id}}">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </a>
-                      <a class="badge badge-danger " ng-click="deleteid(item.id)">
+                      <!-- <a ng-hide="item.isactive" class="badge badge-danger " ng-click="deleteid(item.id)">
                         <i class="fa-solid fa-trash"></i>
-                      </a>
-
+                      </a> -->
+                      <!-- <a ng-hide="!item.isactive" class="badge badge-success " ng-click="deleteid(item.id)">
+                        <i class="fa-solid fa-window-restore"></i>
+                      </a> -->
 
                     </td>
                     <td class="align-middle">
