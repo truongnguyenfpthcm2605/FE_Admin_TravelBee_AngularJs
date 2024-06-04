@@ -125,6 +125,8 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
     $scope.transports = []
     $scope.locations = []
 
+
+
     $http.get($rootScope.url + "/api/v1/hotel/all")
         .then(function (response) {
             $scope.hotels = response.data;
@@ -160,7 +162,7 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
    
 
     $scope.saveTourDetail = () => {
-        console.log(localStorage.getItem('tourID'))
+        console.log(Number(localStorage.getItem('tourID')))
         $http.post($rootScope.url + "/api/v1/staff/tour-detail/save", $scope.tourdetail, {
             headers: {
                 'Authorization': 'Bearer ' + $rootScope.token

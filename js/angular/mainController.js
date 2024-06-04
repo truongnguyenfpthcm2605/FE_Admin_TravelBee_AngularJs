@@ -63,37 +63,39 @@ app.controller("mainController", function ($scope, $rootScope, $http) {
             }
         }).then(function (response) {
             $scope.dataTodayAccess = response.data
-            const data = {
-                labels: $scope.dataTodayAccess.map(item => item[0]),
-                datasets: [{
-                    label: 'Biểu đồ theo dõi truy cập',
-                    data: $scope.dataTodayAccess,
-                    fill: false,
-                    borderColor: 'rgb(190, 182, 092)',
-                }]
-            };
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    animations: {
-                        tension: {
-                            duration: 1000,
-                            easing: 'linear',
-                            from: 1,
-                            to: 0,
-                            loop: true
-                        }
-                    },
-                    scales: {
-                        y: {
-                            min: 0,
-                            max: 100
+            if(response.data!== undefined && response.data !== null){
+                const data = {
+                    labels: $scope.dataTodayAccess.map(item => item[0]),
+                    datasets: [{
+                        label: 'Biểu đồ theo dõi truy cập',
+                        data: $scope.dataTodayAccess,
+                        fill: false,
+                        borderColor: 'rgb(190, 182, 092)',
+                    }]
+                };
+                const config = {
+                    type: 'line',
+                    data: data,
+                    options: {
+                        animations: {
+                            tension: {
+                                duration: 1000,
+                                easing: 'linear',
+                                from: 1,
+                                to: 0,
+                                loop: true
+                            }
+                        },
+                        scales: {
+                            y: {
+                                min: 0,
+                                max: 100
+                            }
                         }
                     }
-                }
-            };
-            const chart = new Chart(ctx, config);
+                };
+                const chart = new Chart(ctx, config);
+            }
         })
     }
 

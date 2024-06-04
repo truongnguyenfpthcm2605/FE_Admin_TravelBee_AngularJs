@@ -31,8 +31,8 @@ angular.module('app').controller('danhsachve', function ($scope, $http, $locatio
         $location.search({ id: id });
     }
 
-    $scope.payment = function (id) {
-        $http.put($rootScope.url + "/api/v1/orders/update/" + id, {
+    $scope.paymentss = function (id) {
+        $http.get($rootScope.url + "/api/v1/orders/update/" + id, {
             headers: {
                 'Authorization': 'Bearer ' + $rootScope.token
             }
@@ -43,10 +43,12 @@ angular.module('app').controller('danhsachve', function ($scope, $http, $locatio
                 title: 'Cập nhật thành công!',
                 text: 'Đã xác nhận thanh toán'
             });
+            $scope.fetchticket();
+
 
         })
         .catch(error => {
-            console.error('Error fetching locations:', error);
+            console.error('Error confirm ticket:', error);
         });
     }
 
