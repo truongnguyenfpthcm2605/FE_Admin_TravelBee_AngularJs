@@ -1,128 +1,168 @@
-app.controller("CRUDHotelController", function ($scope, $location, $http, $rootScope, $routeParams) {
-    $scope.check = false
-    $scope.save = {}
-    let review = document.getElementById('review')
-    $scope.image = 'https://s3.amazonaws.com/thumbnails.venngage.com/template/5456834b-ba95-41a9-85b2-4abd4d313c11.png'
+app.controller(
+  "CRUDKhachSanController",
+  function ($scope, $location, $http, $rootScope, $routeParams) {
+    $scope.check = false;
+    $scope.save = {};
+    $scope.img =''
+
+
     if ($routeParams.id) {
-        $scope.hotel = $rootScope.hotelParam.find(function (hotel) {
-            return hotel.id === $routeParams.id;
-        });
-        review.src = $scope.hotel.image
-        $scope.check = true
+      $scope.hotel = $rootScope.hotelParam.find(function (hotel) {
+        return hotel.id === Number($routeParams.id);
+      });
+      $scope.img = $scope.hotel.images.split(",")
+      $scope.check = true;
+
+     
     } else {
-        $scope.hotel = {}
-        review.src = $scope.image
+      $scope.hotel = {};
     }
+    document.getElementById("save").disabled = true;
 
+    var firebaseConfig = {
+      apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
+      authDomain: "travel-bee-e0b59.firebaseapp.com",
+      projectId: "travel-bee-e0b59",
+      storageBucket: "travel-bee-e0b59.appspot.com",
+      messagingSenderId: "991526403311",
+      appId: "1:991526403311:web:24e7a3ba76e7d0d769af1a",
+      measurementId: "G-DE29CFQQMY",
+    };
+    var config = firebase.initializeApp(firebaseConfig);
+    $scope.image = "";
+    document.getElementById("imagehotel").onchange = function (e) {
+      let files = e.target.files;
+      $scope.uploadfirebase(files);
+    };
 
+    $scope.uploadfirebase = function (files) {
+      const ref = firebase.storage().ref();
+
+      if (files.length === 0) {
+        alert("Vui lòng chọn ít nhất một tệp hình ảnh.");
+        return;
+      }
+
+      Swal.fire({
+        title: "Vui lòng đợi upload ảnh!",
+        text: "Có thể mấy khoản 3s - 5s.",
+        icon: "warning",
+        timer: 3000,
+      });
+
+      const uploadPromises = [];
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const metadata = {
+          contentType: file.type,
+        };
+        const name = file.name;
+        const uploadIMG = ref.child(name).put(file, metadata);
+
+        const promise = uploadIMG
+          .then((snapshot) => snapshot.ref.getDownloadURL())
+          .then((url) => {
+            return url;
+          });
+
+        uploadPromises.push(promise);
+      }
+
+      Promise.all(uploadPromises)
+        .then((downloadURLs) => {
+          list = downloadURLs;
+
+          $scope.img = list.join(",")
+
+          let html = document.getElementById('img');
+          let imagesHTML = '';
+          
+          list.forEach(e => {
+              let img = `<img src="${e}" style="width: 200px; border-radius: 10px;" alt="">`;
+              imagesHTML += img;
+          });
+          
+          html.innerHTML = imagesHTML;
+          
+          Swal.fire({
+            title: "Success!",
+            text: "Upload image thành công",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+
+          document.getElementById("save").disabled = false;
+        })
+
+        .catch((error) => {
+          Swal.fire({
+            title: "Error!",
+            text: "Failed to upload images: " + error,
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        });
+    };
 
     $scope.submitForm = function () {
-        if ($scope.check) {
-            $scope.save = {
-                id: $scope.hotel.id,
-                title: $scope.hotel.title,
-                image: review.src,
-                phone: $scope.hotel.phone,
-                description: $scope.hotel.description,
-                address: $scope.hotel.address,
-                createdate: $scope.hotel.createdate,
-                email: $rootScope.email
+      $scope.hotel = {
+        ...$scope.hotel,
+        email : $rootScope.email,
+        images : $scope.img
+       
+      };
+
+
+      if ($scope.check) {
+        $http
+          .put(
+            $rootScope.url + "/api/v1/hotel/update/" + $scope.hotel.id,
+            $scope.hotel,
+            {
+              headers: {
+                Authorization: "Bearer " + $rootScope.token,
+              },
             }
-            $http.put($rootScope.url + "/api/v1/hotel/update/" + $scope.hotel.id, $scope.save,
-                {
-                    headers: {
-                        'Authorization': 'Bearer ' + $rootScope.token
-                    }
-                }).then(function (response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Cập nhật hotel thành công',
-                        text: 'Tuyệt vời!',
-                    });
-                    $location.url("/QLKhachSan")
-                })
-                .catch(function (error) {
-
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Cập nhật hotel thất bại',
-                        text: 'kiểm tra lai dữ liệu',
-                    });
-                });
-        } else {
-            $scope.hotel.image = review.src
-            if ($scope.hotel.active == null) {
-                $scope.hotel.active = 0
-            }
-            $scope.hotel.email = $rootScope.email
-            $http.post($rootScope.url + "/api/v1/hotel/save", $scope.hotel,
-                {
-                    headers: {
-                        'Authorization': 'Bearer ' + $rootScope.token
-                    }
-                }).then(function (response) {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Thêm hotel thành công',
-                        text: 'Tuyệt vời!',
-                    });
-                    $location.url("/QLKhachSan")
-                })
-                .catch(function (error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Thêm hotel thất bại',
-                        text: 'kiểm tra lai dữ liệu',
-                    });
-                });
-        }
-
-    };
-
-
-
-
-    document.getElementById('fileInputfb').onchange = function (e) {
-        if (e.target.files.length > 0) {
-            let fileType = e.target.files[0].type;
-
-            if (fileType !== 'image/png' && fileType !== 'image/jpeg' && fileType !== 'image/jpg') {
-                alert('Chỉ chấp nhận file ảnh có định dạng .png hoặc .jpg');
-                e.target.value = '';
-                return;
-            }
-            let reader = new FileReader();
-            reader.onload = function (event) {
-                $scope.uploadfirebase(e.target.files[0]);
-            };
-            reader.readAsDataURL(e.target.files[0]);
-        } else {
-            if ($scope.check) {
-                review.src = $scope.hotel.image
-            } else {
-                review.src = $scope.image
-            }
-
-        }
-    };
-
-    $scope.uploadfirebase = function (file) {
-        const ref = firebase.storage().ref();
-        const files = file;
-        const metadata = {
-            contentType: files.type,
-        };
-        const name = files.name;
-        const uploadIMG = ref.child(name).put(files, metadata);
-        return uploadIMG.then((snapshot) => snapshot.ref.getDownloadURL())
-            .then((url) => {
-                $scope.image = url;
-                review.src = $scope.image
-                return url;
+          )
+          .then(function (response) {
+            Swal.fire({
+              icon: "success",
+              title: "Cập nhật hotel thành công",
+              text: "Tuyệt vời!",
             });
+            $location.url("/hotel");
+          })
+          .catch(function (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Cập nhật hotel thất bại",
+              text: "kiểm tra lai dữ liệu",
+            });
+          });
+      } else {
+        $http
+          .post($rootScope.url + "/api/v1/hotel/save", $scope.hotel, {
+            headers: {
+              Authorization: "Bearer " + $rootScope.token,
+            },
+          })
+          .then(function (response) {
+            Swal.fire({
+              icon: "success",
+              title: "Thêm hotel thành công",
+              text: "Tuyệt vời!",
+            });
+            $location.url("/hotel");
+          })
+          .catch(function (error) {
+            Swal.fire({
+              icon: "error",
+              title: "Thêm hotel thất bại",
+              text: "kiểm tra lai dữ liệu",
+            });
+          });
+      }
     };
-
-
-
-
-})
+  }
+);

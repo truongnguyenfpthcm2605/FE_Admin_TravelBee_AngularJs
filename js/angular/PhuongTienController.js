@@ -43,8 +43,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
                         text: "Khách sạn đã được delete thành công.",
                         icon: "success"
                     });
-                    $scope.removeElementById(id)
-                    $scope.current = $rootScope.transportParam
+                    $scope.findAll();
                 })
                     .catch(function (error) {
                         console.log(error)
@@ -62,7 +61,7 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
     $scope.searchKeyword = function (keyword) {
         const searchInput = keyword || '';
         $scope.current = $rootScope.transportParam.filter(function (transport) {
-            return transport.id.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
+            return transport.address.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1 ||
                 transport.title.toLowerCase().indexOf(searchInput.toLowerCase()) !== -1;
         });
     };
@@ -75,15 +74,6 @@ app.controller("PhuongTienController", function ($scope, $location, $http, $root
             return item.id !== id;
         });
     };
-
-    
-
-
-
-
-
-
-
 
 
 })

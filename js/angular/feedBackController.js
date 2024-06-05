@@ -11,7 +11,6 @@ app.controller(
           },
         })
         .then(function (response) {
-          console.log(response.data);
           $rootScope.feedbackParam = response.data;
           $scope.current = $rootScope.feedbackParam;
         })

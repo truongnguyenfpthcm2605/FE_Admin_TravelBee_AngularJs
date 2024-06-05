@@ -229,8 +229,9 @@
         </a>
       </li>
       <li class="nav-item mt-3">
-        <a ng-click="logout()" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6" style="color: red;"><i
-            class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng Xuất</a>
+        <a ng-click="logout()" class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
+          style="color: red;"><i class="fa-solid fa-power-off" style="margin-right: 10px;font-size: 20px;"></i>Đăng
+          Xuất</a>
       </li>
     </ul>
   </div>
@@ -251,16 +252,16 @@
 
         </div>
         <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                    <i class="fa fa-user me-sm-1"></i>
-                    <span class="d-sm-inline d-none">{{fullname}} </span>
-                    <span style="color: #B31312;">{{authorities[0].authority}}</span>
-                </a>
-            </li>
+          <li class="nav-item d-flex align-items-center">
+            <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <i class="fa fa-user me-sm-1"></i>
+              <span class="d-sm-inline d-none">{{fullname}} </span>
+              <span style="color: #B31312;">{{authorities[0].authority}}</span>
+            </a>
+          </li>
 
         </ul>
-    </div>
+      </div>
     </div>
   </nav>
   <div class="container-fluid py-4" ng-controller="KhachSanController">
@@ -274,52 +275,35 @@
                   placeholder="Tìm kiếm">
               </div>
               <div class="col-lg-4">
-                <button ng-click="exportExcel()" class="btn " style="background-color:#9ADE7B; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-file-excel"></i>Excel</button>
-                <a class="btn " href="#!crudHotel" style="background-color:#748E63; color: white;"><i
-                    style="margin-right: 5px;" class="fa-solid fa-gift"></i>Create Hotel</a>
+                <a class="btn " href="#!crudHotel" style="background-color:#748E63; color: white;">Create Hotel</a>
               </div>
             </div>
           </div>
           <div class="card-body px-0 pt-0 pb-2" style="overflow-x: hidden">
             <div class="table-responsive p-0">
-              <table class="table align-items-center mb-0" id="table-hotel">
+              <table class="table mb-0" id="table-hotel">
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'id'; reverse = !reverse">
-                      CODE</th>
-
+                      ng-click="sortKey = 'id'; reverse = !reverse">CODE</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'image'; reverse = !reverse">
-                      Hình ảnh</th>
-
+                      ng-click="sortKey = 'image'; reverse = !reverse">Hình ảnh</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'title'; reverse = !reverse">
-                      Tên Khách Sạn</th>
-
+                      ng-click="sortKey = 'title'; reverse = !reverse">Tên Khách Sạn</th>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'phone'; reverse = !reverse">
-                      SDT</th>
+                      ng-click="sortKey = 'phone'; reverse = !reverse">SDT</th>
+                    <th  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                      ng-click="sortKey = 'description'; reverse = !reverse">Địa chỉ</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'description'; reverse = !reverse">
-                      Địa chỉ </th>
+                      ng-click="sortKey = 'createdate'; reverse = !reverse">Ngày Đăng</th>
                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'address'; reverse = !reverse">
-                      Mô tả</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'createdate'; reverse = !reverse">
-                      Ngày Đăng</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      ng-click="sortKey = 'isactive'; reverse = !reverse">
-                      Kích hoạt</th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Chỉnh sửa
-                    </th>
+                      ng-click="sortKey = 'isactive'; reverse = !reverse">Kích hoạt</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Chỉnh
+                      sửa</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="text-align: center;" ng-repeat="item in current | orderBy:sortKey:reverse">
+                  <tr ng-repeat="item in current | orderBy:sortKey:reverse">
                     <td>
                       <p class="text-xxs font-weight-bold mb-0">{{item.id}}</p>
                     </td>
@@ -335,41 +319,31 @@
                       <p class="text-xxs font-weight-bold mb-0">{{item.title}}</p>
                     </td>
                     <td>
-                      <p class="text-xxs font-weight-bold mb-0">{{item.phone}} </p>
+                      <p class="text-xxs font-weight-bold mb-0">{{item.phone}}</p>
                     </td>
-
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">{{item.address}}</span>
-                    </td>
-                    <td class="align-middle text-center" style="width: 200px;">
-                      <span class="text-secondary text-xs font-weight-bold">{{item.description}}</span>
-                    </td>
-                    <td class="align-middle">
-                      <span class="text-secondary font-weight-bold text-xs">
-                        {{ item.createdate | date:'dd/MM/yyyy' }}
-                      </span>
-
-                    </td>
+                    <td ><p  
+                      style="white-space: wrap; font-size: 11px; overflow: hidden; text-overflow: ellipsis;">{{item.address}}</p></td>
+                    <td class="align-middle"><span class="text-secondary font-weight-bold text-xs">{{ item.createdate |
+                        date:'dd/MM/yyyy' }}</span></td>
                     <td class="align-middle">
                       <span ng-if="item.isactive" class="badge badge-success">Đã kích hoạt</span>
                       <span ng-if="!item.isactive" class="badge badge-danger">Đã khóa</span>
                     </td>
                     <td class="align-middle">
-                      <a class="badge badge-warning " ng-href="#!crudHotel/{{item.id}}">
+                      <a class="badge badge-warning" ng-href="#!crudHotel/{{item.id}}">
                         <i class="fa-solid fa-pen-to-square"></i>
                       </a>
-                      <a class="badge badge-danger " ng-click="deleteid(item.id)">
+                      <a  ng-hide="item.isactive" class="badge badge-danger" ng-click="deleteid(item.id)">
                         <i class="fa-solid fa-trash"></i>
                       </a>
-                    </td>
-                    <td class="align-middle">
-                      <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="modal"
-                        data-target="#editModal" data-original-title="Chỉnh sửa người dùng">
+                      <a ng-hide="!item.isactive" class="badge badge-success " ng-click="deleteid(item.id)">
+                        <i class="fa-solid fa-window-restore"></i>
                       </a>
                     </td>
                   </tr>
                 </tbody>
               </table>
+
             </div>
           </div>
         </div>
@@ -639,7 +613,7 @@
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
-              <table class="table align-items-center mb-0" id="table-voucher">
+              <table class="table  mb-0" id="table-voucher">
                 <thead>
                   <tr>
                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"

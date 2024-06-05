@@ -40,11 +40,9 @@ app.config(function ($routeProvider) {
     })
     .when('/crudHotel', {
       templateUrl: './pages/ThemKhachSan.html',
-      controller:"CRUDKhachSanController",
     })
     .when('/crudHotel/:id', {
-      templateUrl: './pages/CRUDQuanLyKhachSan.html',
-      controller:"CRUDKhachSanController",
+      templateUrl: './pages/ThemKhachSan.html'
     })
     .when('/account', {
       templateUrl: './pages/QLTaiKhoan.html'
@@ -55,17 +53,16 @@ app.config(function ($routeProvider) {
 
     })
     .when('/transport', {
-      templateUrl: './pages/QLPhuongTien.html',
-      controller:'PhuongTienController'
-    })
-    .when('/crudTransport/:id', {
-      templateUrl: './pages/ThemPhuongTien.html',
-      controller:'CRUDTRansportController'
+      templateUrl: './pages/QLPhuongTien.html'
     })
     .when('/crudTransport', {
-      templateUrl: './pages/ThemPhuongTien.html',
-      controller:'CRUDTRansportController'
+      templateUrl: './pages/ThemPhuongTien.html'
+  
     })
+    .when('/crudTransport/:id', {
+      templateUrl: './pages/ThemPhuongTien.html'
+    })
+
     
     
 
