@@ -30,9 +30,12 @@ app.controller("loginController", function ($scope, $location, $http, $rootScope
                             $location.path('/main');
                         } else {
                             Swal.fire({
-                                icon: 'error',
-                                title: 'Đăng Nhập Thất Bại',
-                                text: 'không có quyền truy cập!',
+                                title: 'Đăng Nhập Thành Công',
+                                width: 600,
+                                icon: 'success',
+                                padding: '3em',
+                                color: '#716add'
+                                
                             });
                         }
                     });

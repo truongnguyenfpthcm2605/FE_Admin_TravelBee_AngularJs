@@ -3,7 +3,8 @@ angular.module("app").controller("QuanLyTour", [
   "$http",
   "$location",
   "$rootScope",
-  function ($scope, $http, $location, $rootScope) {
+  '$sce',
+  function ($scope, $http, $location, $rootScope, $sce) {
     $scope.ls = [];
 
     // Fetch locations
@@ -15,8 +16,19 @@ angular.module("app").controller("QuanLyTour", [
           },
         })
         .then((response) => {
-          const activeLocations = response.data.filter((l) => l.isactive);
-          $scope.ls = activeLocations;
+          $scope.ls = response.data.filter((l) => l.isactive);
+          // Tạo phiên bản HTML tin cậy cho mỗi item và cập nhật $scope.ls
+
+          // console.log(activeLocations);
+          // $scope.ls = activeLocations.map((item) => {
+          //   return {
+          //     ...item,
+          //     description: $sce.trustAsHtml(item.description)
+          //   };
+          // });
+
+          console.log($scope.ls);
+
         })
         .catch((error) => {
           console.error("Error fetching locations:", error);
@@ -76,5 +88,7 @@ angular.module("app").controller("QuanLyTour", [
       $location.path("/ThayDoiThongTintour");
       $location.search({ id: id });
     };
+
+
   },
 ]);

@@ -290,13 +290,12 @@
                             <label for="">Ảnh đại diện</label>
                             <input type="file" id="fileInputfb" multiple>
                         </div>
-                        <div style="text-align: left;">
-                            <label for="">Mô tả chi tiết</label>
-                            <input type="text" ng-model="description" placeholder="Nhập mô tả" required>
+                       <div style="text-align: left" >
+                        <label  for="">Mô tả chi tiết</label>
+                        <div id="editor" style="margin-top: 100px; min-height: 1000px;">
                         </div>
-                        <div id="editor" style="margin-top: 100px;">
-                        </div>
-                        <input type="button" ng-click="saves()" value="Lưu Thông Tin" id="savetour">
+                       </div>
+                        <input type="button" ng-click="submitForm()" value="Lưu Thông Tin" id="savetour">
                     </div>
                 </form>
             </div>

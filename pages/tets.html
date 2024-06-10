@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS ng-bind-html Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+    <table>
+        <tr ng-repeat="item in items">
+            <td>
+                <!-- Sử dụng ng-bind-html để bind nội dung HTML -->
+                <p class="text-xs mb-0" style="white-space: pre-line; font-size:11px; overflow: hidden;" ng-bind-html="item.trustedDescription"></p>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        // Định nghĩa module với ngSanitize
+        var app = angular.module('myApp', ['ngSanitize']);
+
+        // Controller với $sce để xử lý nội dung HTML
+        app.controller('MainCtrl', function($scope, $sce) {
+            // Chuyển đổi HTML thành HTML an toàn
+            $scope.items = [
+                { description: '<p>Đây là <b>nội dung</b> HTML của đoạn văn.</p>' },
+                { description: '<p>Ví dụ <i>khác</i> về nội dung HTML.</p>' }
+            ];
+
+            // Tạo phiên bản HTML tin cậy cho mỗi item
+            $scope.items.forEach(function(item) {
+                item.trustedDescription = $sce.trustAsHtml(item.description);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -9,7 +9,8 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
 
 
 
-    // let saveTour = document.getElementById('savetour').disabled = true;
+    let saveTour = document.getElementById('savetour');
+    saveTour.style.disabled = true
     document.getElementById('plantour').style.display = "none";
     var firebaseConfig = {
         apiKey: "AIzaSyBnSgLNQca9x6g5SFN8CU9YA1tBz5gGn6c",
@@ -31,13 +32,12 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
             timer: 5000,
         });
         $scope.uploadfirebase(files)
-        let saveTour = document.getElementById('savetour').disabled = false
+        saveTour.style.disabled = false
+        saveTour.style.backgroundColor = "green";
+
 
     }
 
-    $scope.saves = function(){
-        console.log($scope.editor.getData());
-    }
 
 
 
@@ -98,7 +98,7 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
         var imagesString = list.join(",");
         var locationData = {
             title: $scope.title,
-            description: $scope.description,
+            description: $scope.editor.getData(),
             price: $scope.price,
             location: $scope.location,
             images: imagesString,
@@ -160,6 +160,7 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
 
     $scope.ckeditor = function () {
         CKEDITOR.ClassicEditor.create(document.getElementById("editor"), {
+            height: 1000,
             // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
             toolbar: {
                 items: [
@@ -202,7 +203,7 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
                 ]
             },
             // https://ckeditor.com/docs/ckeditor5/latest/features/editor-placeholder.html#using-the-editor-configuration
-            placeholder: 'Welcome to CKEditor 5!',
+            placeholder: 'Nhập mô tả chi tiết!',
             // https://ckeditor.com/docs/ckeditor5/latest/features/font.html#configuring-the-font-family-feature
             fontFamily: {
                 options: [
