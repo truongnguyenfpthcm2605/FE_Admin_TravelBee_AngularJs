@@ -63,7 +63,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link  active" href="#!main">
+            <a class="nav-link " href="#!main">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1"
@@ -104,7 +104,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  " href="#!QuanLyTour">
+            <a class="nav-link active " href="#!QuanLyTour">
                 <div
                     class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
@@ -288,7 +288,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="{{item.images.split(',')[2]}}" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="{{item.images.split(',')[0]}}" class="avatar avatar-sm me-3" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{item.title}}</h6>
@@ -298,7 +298,7 @@
                       </td>
                       <td>
                         <p class="text-xs mb-0 " style="white-space: pre-line; font-size:11px; /* Đảm bảo văn bản nằm trên một dòng */
-                        overflow: hidden; /* Ẩn văn bản vượt quá giới hạn */"  >{{item.description}}</p>
+                        overflow: hidden; /* Ẩn văn bản vượt quá giới hạn */" ng-bind-html="item.description | unsafe" ></p>
                       </td>
                       <td class="align-middle text-center text-sm">
                         <p class="text-xs font-weight-bold mb-0">{{item.price}} VNĐ</p>
@@ -328,7 +328,7 @@
                     
                     <tr>
                       <div class="frame">
-                        <a href="#!themtourdulich" class="custom-btn btn-success btn-1 m-3" style="text-decoration: none;">Thêm Tour</a>
+                        <a href="#!themtourdulich" class="custom-btn btn-success btn-1 m-3" style="text-decoration: none;"><i class="fa-solid fa-location-dot" style="margin-right: 5px;"></i>Thêm Tour</a>
                       </div>
 
                     </tr>

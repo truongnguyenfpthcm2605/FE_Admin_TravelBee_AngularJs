@@ -10,10 +10,12 @@ app.controller("quanLyVe", function ($scope, $location, $http, $rootScope) {
                 },
             })
             .then((response) => {
-                const activeLocations = response.data;
-                $scope.ls = activeLocations;
-                // $rootScope.locations = response.data;
-                // $scope.ls = $rootScope.locations;
+                $scope.ls=  response.data;
+                
+                $scope.ls.filter(e => {
+                    return e.tour.isactive === true
+                })
+
             })
             .catch((error) => {
                 console.error("Error fetching locations:", error);

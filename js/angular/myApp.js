@@ -67,8 +67,7 @@ app.config(function ($routeProvider) {
     
 
     .when('/danhsachve', {
-      templateUrl: './pages/DanhSachVe.html',
-      controller:'danhsachve'
+      templateUrl: './pages/DanhSachVe.html'
     })
 
     .when('/ThayDoiThongTinVe', {
@@ -83,16 +82,14 @@ app.config(function ($routeProvider) {
       controller: 'UpdateLoation'
     })
     .when('/ThayDoiThongTintour', {
-      templateUrl: './pages/thayDoiThongTinTour.html',
-      controller: 'thayDoiThongTinTour'
+      templateUrl: './pages/thayDoiThongTinTour.html'
     })
     .when('/themtourdulich', {
       templateUrl: './pages/themTourDuLich.html'
     })
 
     .when('/QuanLyTour', {
-      templateUrl: './pages/QuanLyTour.html',
-      controller: 'QuanLyTour'
+      templateUrl: './pages/QuanLyTour.html'
     })
     .when('/quanLyDiaDiem', {
       templateUrl: './pages/quanLyDiaDiem.html',

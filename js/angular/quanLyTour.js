@@ -16,18 +16,7 @@ angular.module("app").controller("QuanLyTour", [
           },
         })
         .then((response) => {
-          $scope.ls = response.data.filter((l) => l.isactive);
-          // Tạo phiên bản HTML tin cậy cho mỗi item và cập nhật $scope.ls
-
-          // console.log(activeLocations);
-          // $scope.ls = activeLocations.map((item) => {
-          //   return {
-          //     ...item,
-          //     description: $sce.trustAsHtml(item.description)
-          //   };
-          // });
-
-          console.log($scope.ls);
+          $scope.ls = response.data;
 
         })
         .catch((error) => {
@@ -89,6 +78,10 @@ angular.module("app").controller("QuanLyTour", [
       $location.search({ id: id });
     };
 
+  
+
 
   },
-]);
+]
+);
+
