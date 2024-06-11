@@ -97,8 +97,7 @@ app.config(function ($routeProvider) {
     })
 
     .when('/ticket', {
-      templateUrl: './pages/QLVe.html',
-      controller: 'quanLyVe'
+      templateUrl: './pages/QLVe.html'
     })
 
     .otherwise({
