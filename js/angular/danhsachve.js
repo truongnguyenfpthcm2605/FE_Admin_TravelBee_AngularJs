@@ -5,7 +5,6 @@ angular.module('app').controller('danhsachve', function ($scope, $http, $locatio
     var idTicket = $location.search().id;
     // Fetch locations
     $scope.fetchticket = function () {
-        console.log("đây là token " + $rootScope.token)
         $http.get($rootScope.url + "/api/v1/orders/all", {
             headers: {
                 'Authorization': 'Bearer ' + $rootScope.token
