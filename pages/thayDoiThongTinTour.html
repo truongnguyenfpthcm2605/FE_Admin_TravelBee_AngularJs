@@ -271,9 +271,8 @@
                         <label for="">Ảnh tour</label>
                         <input type="file" id="fileInputfb" multiple>
                     </div>
-                    <div id="updateEditor">
-
-                    </div>
+                    <textarea cols="5" rows="5" class="form-control" placeholder="Nhập mô tả"
+                    ng-model="formData.description" required></textarea>
                     <input type="button" id="save" value="Cập nhật" class="bg-success" ng-click="save()">
                 </div>
             </form>

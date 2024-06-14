@@ -98,7 +98,7 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
         var imagesString = list.join(",");
         var locationData = {
             title: $scope.title,
-            description: $scope.editor.getData(),
+            description: $scope.description,
             price: $scope.price,
             location: $scope.location,
             images: imagesString,
@@ -123,37 +123,6 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
                 console.log(error)
             });
 
-    }
-
-
-
-
-    $scope.plantour = {
-        startDate: '',
-        endDate: "",
-        email: $rootScope.email,
-        description: '',
-        tourId: Number(localStorage.getItem('tourID'))
-    }
-
-    $scope.savePlantour = () => {
-        $http.post($rootScope.url + "/api/v1/plant-tour/save", $scope.plantour, {
-            headers: {
-                'Authorization': 'Bearer ' + $rootScope.token
-            }
-        })
-            .then(function (response) {
-                Swal.fire({
-                    title: 'Thành công!',
-                    text: 'Thêm Thời gian thành công',
-                    icon: 'success'
-                });
-                $location.url("/QuanLyTour")
-
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
     }
 
 
@@ -320,6 +289,36 @@ angular.module('app').controller('themTourDuLich', ['$scope', '$http', '$locatio
     }
 
     $scope.ckeditor();
+
+    $scope.plantour = {
+        startDate: '',
+        endDate: "",
+        email: $rootScope.email,
+        tourId: Number(localStorage.getItem('tourID'))
+    }
+
+    $scope.savePlantour = () => {
+        $scope.plantour.description = $scope.editor.getData()
+        console.log($scope.plantour)
+        $http.post($rootScope.url + "/api/v1/plant-tour/save", $scope.plantour, {
+            headers: {
+                'Authorization': 'Bearer ' + $rootScope.token
+            }
+        })
+            .then(function (response) {
+                Swal.fire({
+                    title: 'Thành công!',
+                    text: 'Thêm Thời gian thành công',
+                    icon: 'success'
+                });
+                $location.url("/QuanLyTour")
+
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+    }
+
 
 
 
