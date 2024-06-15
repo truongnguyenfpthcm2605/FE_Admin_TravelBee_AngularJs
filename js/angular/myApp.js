@@ -34,16 +34,7 @@ app.config(function ($routeProvider) {
       templateUrl: "./pages/sign-in.html",
       controller: "loginController",
     })
-    .when('/hotel', {
-      templateUrl: './pages/QLKhachSan.html',
-      controller:"KhachSanController",
-    })
-    .when('/crudHotel', {
-      templateUrl: './pages/ThemKhachSan.html',
-    })
-    .when('/crudHotel/:id', {
-      templateUrl: './pages/ThemKhachSan.html'
-    })
+
     .when('/account', {
       templateUrl: './pages/QLTaiKhoan.html'
     })
@@ -52,20 +43,10 @@ app.config(function ($routeProvider) {
       controller:'TaiKhoanController'
 
     })
-    .when('/transport', {
-      templateUrl: './pages/QLPhuongTien.html'
+    .when("/changeplantour/:id", {
+      templateUrl: "./pages/thaydoithongtinplantour.html"      
     })
-    .when('/crudTransport', {
-      templateUrl: './pages/ThemPhuongTien.html'
-  
-    })
-    .when('/crudTransport/:id', {
-      templateUrl: './pages/ThemPhuongTien.html'
-    })
-
     
-    
-
     .when('/danhsachve', {
       templateUrl: './pages/DanhSachVe.html'
     })
@@ -95,7 +76,6 @@ app.config(function ($routeProvider) {
       templateUrl: './pages/quanLyDiaDiem.html',
       
     })
-
     .when('/ticket', {
       templateUrl: './pages/QLVe.html'
     })
