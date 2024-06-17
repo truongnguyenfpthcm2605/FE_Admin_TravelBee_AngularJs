@@ -315,10 +315,10 @@
                                             </td>
                                             <td style=" max-width: 500px;">
                                                 <div class="text-container" ng-class="{'expanded': item.expanded}">
-                                                    <p class="text-xs mb-0" style="white-space: pre-line; font-size:11px;" ng-bind-html="item.description | unsafe">
+                                                    <p class="text-xs mb-0" style="white-space: pre-line; font-size:10px;" ng-bind-html="item.description | unsafe">
                                                     </p>
                                                 </div>
-                                                <button ng-if="item.description.length > 100" ng-click="item.expanded = !item.expanded" class="btn btn-link btn-sm">
+                                                <button ng-if="item.description.length > 100" ng-click="item.expanded = !item.expanded" class="btn btn-link btn-sm" >
                                                     {{ item.expanded ? 'Ẩn bớt' : 'Xem thêm' }}
                                                 </button>
                                             </td>
